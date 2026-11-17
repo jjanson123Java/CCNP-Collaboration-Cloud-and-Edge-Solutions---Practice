@@ -59,6 +59,18 @@ const SRC = {
     "cisco",
     "https://help.webex.com/article/cy2l2z"
   ],
+  "edge_audio": [
+    "Cisco Webex Edge Audio Customer Configuration Guide",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/article/xmsy7d"
+  ],
+  "edge_connect": [
+    "Webex Edge Connect",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-us/article/n68tcpb"
+  ],
   "video_mesh": [
     "Deployment Guide for Video Mesh",
     "Webex Help",
@@ -106,6 +118,12 @@ const SRC = {
     "Webex Help",
     "cisco",
     "https://help.webex.com/en-us/article/n8ox4j/Deployment-Guide-for-Hybrid-Data-Security"
+  ],
+  "migration": [
+    "Prepare to migrate from Unified CM to Webex Calling",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-us/article/4yz2zd"
   ],
   "developer": [
     "Webex Developer Documentation",
@@ -871,42 +889,36 @@ const VER = {
   "20": [
     [
       [
-        "edge_devices",
+        "edge_devices"
+      ],
+      "v"
+    ],
+    [
+      [
+        "edge_audio"
+      ],
+      "v"
+    ],
+    [
+      [
+        "edge_connect"
+      ],
+      "v"
+    ],
+    [
+      [
         "video_mesh"
       ],
       "v"
     ],
     [
       [
-        "edge_devices",
         "video_mesh"
       ],
       "v"
     ],
     [
       [
-        "edge_devices",
-        "video_mesh"
-      ],
-      "v"
-    ],
-    [
-      [
-        "edge_devices",
-        "video_mesh"
-      ],
-      "v"
-    ],
-    [
-      [
-        "edge_devices",
-        "video_mesh"
-      ],
-      "v"
-    ],
-    [
-      [
-        "edge_devices",
         "video_mesh",
         "oreilly_toc"
       ],
@@ -956,58 +968,33 @@ const VER = {
     [
       [
         "sso",
-        "directory",
-        "calendar",
-        "local_gateway",
-        "survivability",
-        "control_hub",
         "clhct_outline"
       ],
       "v"
     ],
     [
       [
-        "sso",
         "directory",
-        "calendar",
-        "local_gateway",
-        "survivability",
-        "control_hub",
         "clhct_outline"
       ],
       "v"
     ],
     [
       [
-        "sso",
-        "directory",
-        "calendar",
         "local_gateway",
-        "survivability",
-        "control_hub",
         "clhct_outline"
       ],
       "v"
     ],
     [
       [
-        "sso",
-        "directory",
-        "calendar",
-        "local_gateway",
         "survivability",
-        "control_hub",
         "clhct_outline"
       ],
       "v"
     ],
     [
       [
-        "sso",
-        "directory",
-        "calendar",
-        "local_gateway",
-        "survivability",
         "control_hub",
         "clhct_outline"
       ],
@@ -1055,7 +1042,6 @@ const VER = {
     [
       [
         "calling",
-        "translation",
         "clhct_outline"
       ],
       "v"
@@ -1063,6 +1049,12 @@ const VER = {
     [
       [
         "calling",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
         "translation",
         "clhct_outline"
       ],
@@ -1070,8 +1062,7 @@ const VER = {
     ],
     [
       [
-        "calling",
-        "translation",
+        "control_hub",
         "clhct_outline"
       ],
       "v"
@@ -1079,15 +1070,6 @@ const VER = {
     [
       [
         "calling",
-        "translation",
-        "clhct_outline"
-      ],
-      "v"
-    ],
-    [
-      [
-        "calling",
-        "translation",
         "clhct_outline"
       ],
       "c"
@@ -1133,35 +1115,35 @@ const VER = {
   "26": [
     [
       [
-        "control_hub",
+        "migration",
         "clhct_outline"
       ],
       "v"
     ],
     [
       [
-        "control_hub",
+        "migration",
         "clhct_outline"
       ],
       "v"
     ],
     [
       [
-        "control_hub",
+        "migration",
         "clhct_outline"
       ],
       "v"
     ],
     [
       [
-        "control_hub",
+        "calling",
         "clhct_outline"
       ],
       "v"
     ],
     [
       [
-        "control_hub",
+        "migration",
         "clhct_outline"
       ],
       "c"

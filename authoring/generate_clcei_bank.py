@@ -244,6 +244,8 @@ SOURCES = {
     "directory": ["Deployment Guide for Directory Connector", "Webex Help", "cisco", "https://help.webex.com/article/zqvufbb"],
     "calendar": ["Deployment guide for Hybrid Calendar", "Webex Help", "cisco", "https://help.webex.com/en-us/article/n6cwujdb"],
     "edge_devices": ["Webex Edge for Devices", "Webex Help", "cisco", "https://help.webex.com/article/cy2l2z"],
+    "edge_audio": ["Cisco Webex Edge Audio Customer Configuration Guide", "Webex Help", "cisco", "https://help.webex.com/article/xmsy7d"],
+    "edge_connect": ["Webex Edge Connect", "Webex Help", "cisco", "https://help.webex.com/en-us/article/n68tcpb"],
     "video_mesh": ["Deployment Guide for Video Mesh", "Webex Help", "cisco", "https://help.webex.com/article/2r5gv7"],
     "sso": ["Single Sign-On Integration in Control Hub", "Webex Help", "cisco", "https://help.webex.com/en-us/article/ixe4v9"],
     "calling": ["Configure trunks, route groups, and dial plans for Webex Calling", "Webex Help", "cisco", "https://help.webex.com/en-us/article/n0xb944"],
@@ -252,7 +254,15 @@ SOURCES = {
     "local_gateway": ["Webex Calling Configuration Workflow", "Webex Help", "cisco", "https://help.webex.com/en-US/article/32gfts"],
     "control_hub": ["Control Hub administration", "Webex Help", "cisco", "https://help.webex.com/en-us/article/n4v7y7/Getting-started-with-Control-Hub"],
     "hybrid_security": ["Hybrid Data Security deployment guide", "Webex Help", "cisco", "https://help.webex.com/en-us/article/n8ox4j/Deployment-Guide-for-Hybrid-Data-Security"],
+    "migration": ["Prepare to migrate from Unified CM to Webex Calling", "Webex Help", "cisco", "https://help.webex.com/en-us/article/4yz2zd"],
     "developer": ["Webex Developer Documentation", "Webex for Developers", "cisco", "https://developer.webex.com/docs"],
+}
+
+QUESTION_SOURCES = {
+    20: [["edge_devices"], ["edge_audio"], ["edge_connect"], ["video_mesh"], ["video_mesh"], ["video_mesh"]],
+    22: [["sso"], ["directory"], ["local_gateway"], ["survivability"], ["control_hub"]],
+    24: [["calling"], ["calling"], ["translation"], ["control_hub"], ["calling"]],
+    26: [["migration"], ["migration"], ["migration"], ["calling"], ["migration"]],
 }
 
 
@@ -277,13 +287,13 @@ def write_files():
 
     ver = {}
     for n, _, _, qs in CHAPTERS:
-        sources = CHAPTER_SOURCES[n]
+        per_question_sources = QUESTION_SOURCES.get(n, [CHAPTER_SOURCES[n] for _ in qs])
         # Five of six book questions and four of five v2 questions are directly
         # verified. The final question in each chapter is transparently Concept.
         ver[str(n)] = []
         for i in range(len(qs)):
             is_verified = i < len(qs) - 1
-            keys = list(sources)
+            keys = list(per_question_sources[i])
             if not is_verified:
                 keys.append("oreilly_toc" if n <= 21 else "clhct_outline")
             elif n >= 22:

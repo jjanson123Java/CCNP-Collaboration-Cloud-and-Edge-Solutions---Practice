@@ -10,7 +10,7 @@ Date: 2026-11-17
 - Total original questions: 161
 - Directly verified: 133 (82.6%, displayed as 83%)
 - Concept references: 28
-- Source records: 19
+- Source records: 22
 - Uncovered outline headings: 0
 
 The first 21 chapters follow the O'Reilly/Cisco Press table of contents. The final seven sections were corrected from the provisional six-section handoff and now match the seven domains in Cisco's official CLHCT 300-820 v2.0 outline:
@@ -60,7 +60,7 @@ OK: online scoring, remediation, sources, service-worker offline reload, and fil
 
 ## Source-link check
 
-All 19 distinct Cisco, Webex Help, O'Reilly/Cisco Press, official exam-outline, and Webex Developer URLs completed the bounded HTTP reachability sweep without a failed status. Redirects were followed to their current destinations.
+All 22 distinct Cisco, Webex Help, O'Reilly/Cisco Press, official exam-outline, and Webex Developer URLs completed the bounded HTTP reachability sweep without a failed status. Redirects were followed to their current destinations.
 
 ## Items for owner review
 
