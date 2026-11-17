@@ -1,0 +1,926 @@
+{
+  "chapters": [
+    {
+      "n": 1,
+      "part": "Part I: Key Concepts",
+      "title": "Introduction to the Cisco Expressway Solution",
+      "sections": [
+        {
+          "name": "VCS to Expressway migration",
+          "question_ids": [
+            "1.1"
+          ]
+        },
+        {
+          "name": "SIP on the Expressway",
+          "question_ids": [
+            "1.2"
+          ]
+        },
+        {
+          "name": "H.323 on the Expressways",
+          "question_ids": [
+            "1.3"
+          ]
+        },
+        {
+          "name": "Expressway licensing (book: option/release keys; current: Smart Licensing, license consumption, Expressway Select)",
+          "question_ids": [
+            "1.4"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 2,
+      "part": "Part I: Key Concepts",
+      "title": "Configure Key Cisco Expressway Settings",
+      "sections": [
+        {
+          "name": "Expressway deployment on VM (OVA sizes)",
+          "question_ids": [
+            "2.1"
+          ]
+        },
+        {
+          "name": "Service Setup Wizard via web interface",
+          "question_ids": [
+            "2.2"
+          ]
+        },
+        {
+          "name": "Expressway system configuration (DNS, NTP, interfaces, QoS, firewall rules)",
+          "question_ids": [
+            "2.3"
+          ]
+        },
+        {
+          "name": "Backup and restore procedure",
+          "question_ids": [
+            "2.4"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 3,
+      "part": "Part I: Key Concepts",
+      "title": "Initial Configuration Settings on the Cisco Expressway",
+      "sections": [
+        {
+          "name": "H.323 settings",
+          "question_ids": [
+            "3.1"
+          ]
+        },
+        {
+          "name": "SIP and domain settings",
+          "question_ids": [
+            "3.2"
+          ]
+        },
+        {
+          "name": "Protocol interworking (H.323<->SIP, IPv4<->IPv6)",
+          "question_ids": [
+            "3.3"
+          ]
+        },
+        {
+          "name": "Verifying registration",
+          "question_ids": [
+            "3.4"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 4,
+      "part": "Part I: Key Concepts",
+      "title": "Regular Expressions on the Cisco Expressway",
+      "sections": [
+        {
+          "name": "Use cases for regular expressions (transforms, search rules, allow/deny lists)",
+          "question_ids": [
+            "4.1"
+          ]
+        },
+        {
+          "name": "Regex syntax: . * + ? \\d [ ] ( ) \\1 ^ $ (?!) ",
+          "question_ids": [
+            "4.2"
+          ]
+        },
+        {
+          "name": "Check Pattern tool",
+          "question_ids": [
+            "4.3"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 5,
+      "part": "Part I: Key Concepts",
+      "title": "Security Overview on the Cisco Expressway",
+      "sections": [
+        {
+          "name": "SIP media encryption mode (Auto, Force encrypted, Force unencrypted, Best effort)",
+          "question_ids": [
+            "5.1"
+          ]
+        },
+        {
+          "name": "Certificates (CSR, CN/SAN, trusted CA list)",
+          "question_ids": [
+            "5.2"
+          ]
+        },
+        {
+          "name": "Administrator authentication (local, remote/LDAP)",
+          "question_ids": [
+            "5.3"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 6,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Registration on Cisco Expressway",
+      "sections": [
+        {
+          "name": "Registration conflict policy (H.323)",
+          "question_ids": [
+            "6.1"
+          ]
+        },
+        {
+          "name": "Registration restriction policy (None, Allow list, Deny list, Policy service)",
+          "question_ids": [
+            "6.2"
+          ]
+        },
+        {
+          "name": "Registration authentication (device authentication, local database)",
+          "question_ids": [
+            "6.3"
+          ]
+        },
+        {
+          "name": "Subzones and membership rules",
+          "question_ids": [
+            "6.4"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 7,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Cisco Expressway Call Processing Order",
+      "sections": [
+        {
+          "name": "Transforms (pre-search transforms, search rule transforms)",
+          "question_ids": [
+            "7.1"
+          ]
+        },
+        {
+          "name": "Call Policy / Admin Policy (CPL)",
+          "question_ids": [
+            "7.2"
+          ]
+        },
+        {
+          "name": "User Policy / FindMe",
+          "question_ids": [
+            "7.3"
+          ]
+        },
+        {
+          "name": "Search history and the Locate tool",
+          "question_ids": [
+            "7.4"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 8,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Bandwidth Management",
+      "sections": [
+        {
+          "name": "Subzone bandwidth management",
+          "question_ids": [
+            "8.1"
+          ]
+        },
+        {
+          "name": "Links and pipes",
+          "question_ids": [
+            "8.2"
+          ]
+        },
+        {
+          "name": "Call control using pipes",
+          "question_ids": [
+            "8.3"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 9,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Multisite Collaboration Solutions",
+      "sections": [
+        {
+          "name": "Dial plan elements (zones, search rules, transforms, priorities)",
+          "question_ids": [
+            "9.1"
+          ]
+        },
+        {
+          "name": "Flat vs structured dial plans",
+          "question_ids": [
+            "9.2"
+          ]
+        },
+        {
+          "name": "Hierarchical video network / directory Expressway",
+          "question_ids": [
+            "9.3"
+          ]
+        },
+        {
+          "name": "Configuring neighbor zones (hop count)",
+          "question_ids": [
+            "9.4"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 10,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Multisite and Business-to-Business (B2B) Collaboration Solutions",
+      "sections": [
+        {
+          "name": "Firewall issues in collaboration",
+          "question_ids": [
+            "10.1"
+          ]
+        },
+        {
+          "name": "NAT issues in collaboration",
+          "question_ids": [
+            "10.2"
+          ]
+        },
+        {
+          "name": "STUN, TURN and ICE",
+          "question_ids": [
+            "10.3"
+          ]
+        },
+        {
+          "name": "Expressway media traversal (Assent, H.460.18/19)",
+          "question_ids": [
+            "10.4"
+          ]
+        },
+        {
+          "name": "DNS zones (SRV records for SIP and H.323)",
+          "question_ids": [
+            "10.5"
+          ]
+        },
+        {
+          "name": "Toll fraud prevention (no custom CPL)",
+          "question_ids": [
+            "10.6"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 11,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Clustering Expressways",
+      "sections": [
+        {
+          "name": "Clustering requirements (peers, versions, latency)",
+          "question_ids": [
+            "11.1"
+          ]
+        },
+        {
+          "name": "DNS and clustering",
+          "question_ids": [
+            "11.2"
+          ]
+        },
+        {
+          "name": "Zones and clustering",
+          "question_ids": [
+            "11.3"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 12,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Troubleshooting a Business-to-Business (B2B) Collaboration Solution",
+      "sections": [
+        {
+          "name": "Troubleshooting registration issues",
+          "question_ids": [
+            "12.1"
+          ]
+        },
+        {
+          "name": "Troubleshooting calling issues",
+          "question_ids": [
+            "12.2"
+          ]
+        },
+        {
+          "name": "Troubleshooting DNS issues",
+          "question_ids": [
+            "12.3"
+          ]
+        },
+        {
+          "name": "Troubleshooting certificate issues",
+          "question_ids": [
+            "12.4"
+          ]
+        },
+        {
+          "name": "Diagnostic logging, tcpdump and other tools",
+          "question_ids": [
+            "12.5"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 13,
+      "part": "Part III: Mobile and Remote Access",
+      "title": "Introduction to Mobile and Remote Access (MRA)",
+      "sections": [
+        {
+          "name": "Purpose of MRA",
+          "question_ids": [
+            "13.1"
+          ]
+        },
+        {
+          "name": "Components of MRA",
+          "question_ids": [
+            "13.2"
+          ]
+        },
+        {
+          "name": "Considerations for MRA deployment",
+          "question_ids": [
+            "13.3"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 14,
+      "part": "Part III: Mobile and Remote Access",
+      "title": "Configure an MRA Solution",
+      "sections": [
+        {
+          "name": "DNS records (_collab-edge, _cisco-uds)",
+          "question_ids": [
+            "14.1"
+          ]
+        },
+        {
+          "name": "Certificates (Expressway-C/E SANs)",
+          "question_ids": [
+            "14.2"
+          ]
+        },
+        {
+          "name": "Cisco Unified CM settings for MRA",
+          "question_ids": [
+            "14.3"
+          ]
+        },
+        {
+          "name": "Unified Communications configuration on Expressways",
+          "question_ids": [
+            "14.4"
+          ]
+        },
+        {
+          "name": "HTTP allow list",
+          "question_ids": [
+            "14.5"
+          ]
+        },
+        {
+          "name": "Unified Communications traversal zones",
+          "question_ids": [
+            "14.6"
+          ]
+        },
+        {
+          "name": "SIP trunk security profile on CUCM",
+          "question_ids": [
+            "14.1"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 15,
+      "part": "Part III: Mobile and Remote Access",
+      "title": "Troubleshoot an MRA Solution",
+      "sections": [
+        {
+          "name": "General MRA troubleshooting techniques",
+          "question_ids": [
+            "15.1"
+          ]
+        },
+        {
+          "name": "Registration and certificate issues",
+          "question_ids": [
+            "15.2"
+          ]
+        },
+        {
+          "name": "Cisco Jabber sign-in issues",
+          "question_ids": [
+            "15.3"
+          ]
+        },
+        {
+          "name": "Other specific issues",
+          "question_ids": [
+            "15.4"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 16,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Introduction to Cisco Cloud Collaboration",
+      "sections": [
+        {
+          "name": "Cloud collaboration solutions",
+          "question_ids": [
+            "16.1"
+          ]
+        },
+        {
+          "name": "Cisco Webex components",
+          "question_ids": [
+            "16.2"
+          ]
+        },
+        {
+          "name": "Cisco Webex Hybrid Services (connector host/management connector)",
+          "question_ids": [
+            "16.3"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 17,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Configure Webex Hybrid Directory Service",
+      "sections": [
+        {
+          "name": "Deployment model",
+          "question_ids": [
+            "17.1"
+          ]
+        },
+        {
+          "name": "Deployment requirements",
+          "question_ids": [
+            "17.2"
+          ]
+        },
+        {
+          "name": "Infrastructure requirements",
+          "question_ids": [
+            "17.3"
+          ]
+        },
+        {
+          "name": "Active Directory configuration and synchronization (Directory Connector)",
+          "question_ids": [
+            "17.4"
+          ]
+        },
+        {
+          "name": "Webex user service assignment",
+          "question_ids": [
+            "17.5"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 18,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Configure Webex Hybrid Calendar Service",
+      "sections": [
+        {
+          "name": "Calendar service operation",
+          "question_ids": [
+            "18.1"
+          ]
+        },
+        {
+          "name": "Expressway-based calendar connector (Exchange)",
+          "question_ids": [
+            "18.2"
+          ]
+        },
+        {
+          "name": "Google Calendar deployment in the cloud",
+          "question_ids": [
+            "18.3"
+          ]
+        },
+        {
+          "name": "Office 365",
+          "question_ids": [
+            "18.4"
+          ]
+        },
+        {
+          "name": "One Button to Push (OBTP)",
+          "question_ids": [
+            "18.5"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 19,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Configure Webex Hybrid Message Service",
+      "sections": [
+        {
+          "name": "Deployment models",
+          "question_ids": [
+            "19.1"
+          ]
+        },
+        {
+          "name": "Deployment requirements",
+          "question_ids": [
+            "19.2"
+          ]
+        },
+        {
+          "name": "Expressway requirements",
+          "question_ids": [
+            "19.3"
+          ]
+        },
+        {
+          "name": "Certificates",
+          "question_ids": [
+            "19.4"
+          ]
+        },
+        {
+          "name": "Registering the Expressway connector to the Webex cloud",
+          "question_ids": [
+            "19.5"
+          ]
+        },
+        {
+          "name": "IM and Presence configuration",
+          "question_ids": [
+            "19.6"
+          ]
+        },
+        {
+          "name": "Managing the Hybrid Message Service",
+          "question_ids": [
+            "19.1"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 20,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Webex Edge Solutions",
+      "sections": [
+        {
+          "name": "Webex Edge for Devices",
+          "question_ids": [
+            "20.1"
+          ]
+        },
+        {
+          "name": "Webex Edge for Calling",
+          "question_ids": [
+            "20.2"
+          ]
+        },
+        {
+          "name": "Webex Edge Audio",
+          "question_ids": [
+            "20.3"
+          ]
+        },
+        {
+          "name": "Webex Edge Connect",
+          "question_ids": [
+            "20.4"
+          ]
+        },
+        {
+          "name": "Webex Video Mesh (signaling and media flows, clustering, ports)",
+          "question_ids": [
+            "20.5"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 21,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Cisco Jabber for Cloud and Hybrid Deployments with Cisco Webex Messenger",
+      "sections": [
+        {
+          "name": "Deployment requirements",
+          "question_ids": [
+            "21.1"
+          ]
+        },
+        {
+          "name": "Cisco Unified CM requirements",
+          "question_ids": [
+            "21.2"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 22,
+      "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+      "title": "Suite and Devices Configuration",
+      "sections": [
+        {
+          "name": "1.1 SSO",
+          "question_ids": [
+            "22.1"
+          ]
+        },
+        {
+          "name": "1.2 directory synchronization",
+          "question_ids": [
+            "22.2"
+          ]
+        },
+        {
+          "name": "1.3 hybrid calendar",
+          "question_ids": [
+            "22.3"
+          ]
+        },
+        {
+          "name": "1.4 local gateways",
+          "question_ids": [
+            "22.4"
+          ]
+        },
+        {
+          "name": "1.5 site survivability",
+          "question_ids": [
+            "22.5"
+          ]
+        },
+        {
+          "name": "1.6 calling features",
+          "question_ids": [
+            "22.1"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 23,
+      "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+      "title": "Cloud Management",
+      "sections": [
+        {
+          "name": "2.1 cloud user management",
+          "question_ids": [
+            "23.1"
+          ]
+        },
+        {
+          "name": "2.1.a Directory Connector",
+          "question_ids": [
+            "23.2"
+          ]
+        },
+        {
+          "name": "2.1.b SCIM",
+          "question_ids": [
+            "23.3"
+          ]
+        },
+        {
+          "name": "2.1.c RBAC",
+          "question_ids": [
+            "23.4"
+          ]
+        },
+        {
+          "name": "2.2 bandwidth and QoS diagnostics",
+          "question_ids": [
+            "23.5"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 24,
+      "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+      "title": "Suite and Devices Management",
+      "sections": [
+        {
+          "name": "3.1 Webex Calling",
+          "question_ids": [
+            "24.1"
+          ]
+        },
+        {
+          "name": "3.2 call routing",
+          "question_ids": [
+            "24.2"
+          ]
+        },
+        {
+          "name": "3.3 cloud meetings",
+          "question_ids": [
+            "24.3"
+          ]
+        },
+        {
+          "name": "3.4 cloud messaging",
+          "question_ids": [
+            "24.4"
+          ]
+        },
+        {
+          "name": "3.5 endpoint registration",
+          "question_ids": [
+            "24.5"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 25,
+      "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+      "title": "Suite and Device Administration",
+      "sections": [
+        {
+          "name": "4.1 Webex administration",
+          "question_ids": [
+            "25.1"
+          ]
+        },
+        {
+          "name": "4.1.a user management",
+          "question_ids": [
+            "25.2"
+          ]
+        },
+        {
+          "name": "4.1.b organization management",
+          "question_ids": [
+            "25.3"
+          ]
+        },
+        {
+          "name": "4.1.c site management",
+          "question_ids": [
+            "25.4"
+          ]
+        },
+        {
+          "name": "4.2 AI features",
+          "question_ids": [
+            "25.5"
+          ]
+        },
+        {
+          "name": "4.3 migration tools",
+          "question_ids": [
+            "25.1"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 26,
+      "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+      "title": "Hybrid and Migration to the Cloud",
+      "sections": [
+        {
+          "name": "5.1 hybrid and migration",
+          "question_ids": [
+            "26.1"
+          ]
+        },
+        {
+          "name": "5.1.a Cloud Connected UC",
+          "question_ids": [
+            "26.2"
+          ]
+        },
+        {
+          "name": "5.1.b Control Hub",
+          "question_ids": [
+            "26.3"
+          ]
+        },
+        {
+          "name": "5.2 advanced dial plans",
+          "question_ids": [
+            "26.4"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 27,
+      "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+      "title": "Security",
+      "sections": [
+        {
+          "name": "6.1 Webex security",
+          "question_ids": [
+            "27.1"
+          ]
+        },
+        {
+          "name": "6.2 cloud security realms",
+          "question_ids": [
+            "27.2"
+          ]
+        },
+        {
+          "name": "6.2 identity/KMS/index/compliance/content",
+          "question_ids": [
+            "27.3"
+          ]
+        },
+        {
+          "name": "6.3 Hybrid Data Security",
+          "question_ids": [
+            "27.4"
+          ]
+        }
+      ]
+    },
+    {
+      "n": 28,
+      "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+      "title": "APIs and Programmability",
+      "sections": [
+        {
+          "name": "7.1 App Hub/Developer/RoomOS portals",
+          "question_ids": [
+            "28.1"
+          ]
+        },
+        {
+          "name": "7.2 device macros",
+          "question_ids": [
+            "28.2"
+          ]
+        },
+        {
+          "name": "7.3 Messaging/Meeting/Calling/People/Events APIs",
+          "question_ids": [
+            "28.3"
+          ]
+        }
+      ]
+    }
+  ]
+}

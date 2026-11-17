@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{PAGE_TITLE}}</title>
+<meta name="description" content="{{META_DESCRIPTION}}">
+<meta name="theme-color" content="#0b1220">
+<link rel="manifest" href="{{ASSET_PREFIX}}manifest.webmanifest">
+<link rel="icon" type="image/png" href="{{ASSET_PREFIX}}icons/favicon-32.png">
+<link rel="apple-touch-icon" href="{{ASSET_PREFIX}}icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="{{APP_SHORT_NAME}}">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1220; --panel:#111a2e; --panel2:#16213a; --line:#23304d;
+  --text:#d8deea; --muted:#8b97b0; --accent:#5fa8c9; --accent2:#3f7f9e;
+  --ok:#4cc38a; --okbg:rgba(76,195,138,.10); --bad:#ef6b6b; --badbg:rgba(239,107,107,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px}
+header h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:30px;margin:0 0 4px;letter-spacing:.2px}
+header .sub{color:var(--muted);font-size:14px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.controls{margin:24px 0;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;display:flex;flex-wrap:wrap;gap:14px;align-items:end}
+.controls label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+select,button{font:inherit;color:var(--text)}
+select{background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:9px 12px;min-width:340px;max-width:100%}
+.chk{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;padding-bottom:9px}
+button{cursor:pointer;border-radius:7px;border:1px solid var(--line);background:var(--panel2);padding:9px 16px}
+button:hover{border-color:var(--accent2)}
+button.primary{background:var(--accent2);border-color:var(--accent2);color:#fff;font-weight:600}
+button.primary:hover{background:var(--accent)}
+.meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;margin:6px 2px 14px}
+.q{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+.q.correct{border-color:rgba(76,195,138,.45)}
+.q.incorrect{border-color:rgba(239,107,107,.45)}
+.qhead{display:flex;gap:12px;align-items:flex-start}
+.qnum{font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:13px;min-width:34px;padding-top:2px}
+.qtext{font-weight:500;flex:1}
+.qtag{font-size:11px;color:var(--muted);margin-top:3px;font-weight:400}
+.opts{margin:12px 0 0 46px;display:grid;gap:6px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:7px;border:1px solid transparent;cursor:pointer}
+.opt:hover{background:var(--panel2)}
+.opt input{margin-top:4px;accent-color:var(--accent)}
+.opt .L{font-family:"IBM Plex Mono",monospace;color:var(--muted);min-width:18px}
+.opt.is-right{color:var(--ok);background:var(--okbg);border-color:rgba(76,195,138,.35)}
+.opt.is-right .L{color:var(--ok)}
+.opt.is-wrong{color:var(--bad);background:var(--badbg);border-color:rgba(239,107,107,.35)}
+.opt.is-wrong .L{color:var(--bad)}
+.locked .opt{cursor:default}.locked .opt:hover{background:none}
+.qfoot{margin:10px 0 0 46px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.toggle{font-size:13px;padding:5px 12px;background:transparent}
+.verdict{font-weight:600;font-size:14px}
+.verdict.ok{color:var(--ok)}.verdict.bad{color:var(--bad)}
+.answer{display:none;margin:10px 0 0 46px;padding:10px 14px;border-left:3px solid var(--accent2);background:var(--panel2);border-radius:0 7px 7px 0;font-size:14px}
+.answer.show{display:block}
+.answer b{color:var(--ok)}
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+#results{display:none;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:22px}
+#results h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;margin:0 0 14px;font-size:22px}
+.score{display:flex;gap:28px;flex-wrap:wrap;align-items:baseline}
+.big{font-family:"Source Serif 4",Georgia,serif;font-size:52px;line-height:1}
+.kv{color:var(--muted);font-size:14px}.kv b{color:var(--text);font-size:18px}
+.bar{height:8px;background:var(--panel2);border-radius:4px;overflow:hidden;margin:16px 0 6px;display:flex}
+.bar .g{background:var(--ok)}.bar .r{background:var(--bad)}.bar .u{background:#4a5672}
+table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+td.num{font-family:"IBM Plex Mono",monospace;text-align:right}
+.pct-ok{color:var(--ok)}.pct-bad{color:var(--bad)}.pct-mid{color:#d9b25f}
+.note{color:var(--muted);font-size:12.5px;margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+.src{margin-top:8px;font-size:12.5px;color:var(--muted)}
+.src a{color:var(--accent);text-decoration:none}.src a:hover{text-decoration:underline}
+.badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:1px 7px;border-radius:4px;margin-right:6px;vertical-align:1px}
+.b-v{background:rgba(76,195,138,.14);color:var(--ok);border:1px solid rgba(76,195,138,.35)}
+.b-c{background:rgba(217,178,95,.12);color:#d9b25f;border:1px solid rgba(217,178,95,.35)}
+.t-cisco{color:#8fc3db}.t-prep{color:#c7a8e8}.t-ref{color:var(--muted)}
+details.verify{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:-8px 0 22px}
+details.verify summary{cursor:pointer;font-weight:600;list-style:none}
+details.verify summary::-webkit-details-marker{display:none}
+details.verify summary::before{content:"▸ ";color:var(--accent)}
+details.verify[open] summary::before{content:"▾ "}
+.vgrid{display:flex;gap:26px;flex-wrap:wrap;margin:14px 0 6px}
+.vgrid .kv b{font-size:20px}
+.verify ul{margin:8px 0 0 18px;padding:0;font-size:13.5px}.verify li{margin-bottom:5px}
+.verify h4{margin:16px 0 4px;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.srclist{columns:2;column-gap:28px;font-size:12.5px;margin-top:6px}
+.srclist div{break-inside:avoid;margin-bottom:5px}
+.srclist a{color:var(--text);text-decoration:none}.srclist a:hover{color:var(--accent)}
+@media(max-width:700px){.srclist{columns:1}}
+.guide{margin-top:10px;font-size:14px;color:var(--text)}
+.guide a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(95,168,201,.35)}
+.guide a:hover{border-bottom-color:var(--accent)}
+.guide span{color:var(--muted);font-size:12.5px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.toolbar button,.btn{font-size:13px;padding:7px 13px}
+.btn{display:inline-block;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--text);text-decoration:none}
+.btn:hover{border-color:var(--accent2)}
+#installBtn{display:none}
+.net{font-size:12px;color:var(--muted);margin-left:auto;font-family:"IBM Plex Mono",monospace}
+.help{font-size:14px}.help ol,.help ul{margin:6px 0 0 20px;padding:0}.help li{margin-bottom:6px}
+.help p{margin:6px 0;color:var(--muted)}
+.help code{font-family:"IBM Plex Mono",monospace;background:var(--panel2);padding:1px 5px;border-radius:4px}
+.verdict-big{display:inline-block;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:22px;letter-spacing:.12em;padding:6px 16px;border-radius:8px;margin-bottom:14px}
+.v-pass{color:var(--ok);background:var(--okbg);border:1px solid rgba(76,195,138,.5)}
+.v-fail{color:var(--bad);background:var(--badbg);border:1px solid rgba(239,107,107,.5)}
+.study{margin-top:18px;padding:14px 16px;border:1px solid rgba(239,107,107,.35);border-radius:8px;background:rgba(239,107,107,.05)}
+.study.ok{border-color:rgba(76,195,138,.35);background:rgba(76,195,138,.05)}
+.study h3{margin:0 0 8px;font-size:15px}
+.study ol{margin:0 0 0 20px;padding:0;font-size:14px}.study li{margin-bottom:4px}
+.study button{margin-top:10px;font-size:13px;padding:6px 12px}
+@media(max-width:600px){select{min-width:0;width:100%}.controls>div{width:100%}.wrap{padding:20px 14px 60px}.opts,.qfoot,.answer{margin-left:0}}
+.empty{color:var(--muted);text-align:center;padding:40px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">{{EYEBROW}}</div>
+  <h1>{{H1_TITLE}}</h1>
+  <div class="sub">How much do I know? — practice tests by chapter</div>
+  <div class="guide">📘 Study guide: <a href="{{STUDY_GUIDE_URL}}" target="_blank" rel="noopener">{{STUDY_GUIDE_LINK_TEXT}}</a> <span>(requires an O'Reilly login)</span></div>
+  <div class="toolbar">
+    <button id="helpBtn">How to use</button>
+    <button id="installBtn">Install app</button>
+    <a class="btn" id="dlLink" href="{{OFFLINE_ZIP_URL}}">Download for offline use</a>
+    {{OTHER_EXAM_LINKS}}
+    <a class="btn" href="{{REPO_URL}}" target="_blank" rel="noopener">GitHub</a>
+    <span id="netStatus" class="net"></span>
+  </div>
+</header>
+
+<details class="verify" id="help">
+<summary>How to use these practice tests</summary>
+<div class="help">
+  <h4>Taking a test</h4>
+  <ol>
+    <li>Pick a test from the <b>Chapter test</b> list. You can choose a single chapter (Ch. {{FIRST_CH}}–{{LAST_CH}}, grouped by book part), <b>All chapters — full exam</b> (all {{TOTAL_Q}} questions), or <b>All chapters — random 50</b>.</li>
+    <li>Optionally tick <b>Shuffle question order</b>, and choose a <b>Pass mark</b> (80% by default).</li>
+    <li>Click <b>Load test</b>. Each question has four answers, A–D. Answer order is shuffled every time you load a test.</li>
+    <li>Use <b>Show answer</b> on any question to see the correct answer, an explanation, and the Cisco document or study site it was checked against. Use <b>Show all answers</b> to study instead of testing.</li>
+    <li>Click <b>Submit test</b>. If any questions are blank you'll be asked to confirm. Correct answers turn <span class="pct-ok">green</span> and wrong picks turn <span class="pct-bad">red</span>.</li>
+  </ol>
+  <h4>Reading your results</h4>
+  <ul>
+    <li>A <b>PASS</b> or <b>FAIL</b> verdict against your chosen pass mark, your score (for example 41/50), and the percentage correct, incorrect and unanswered.</li>
+    <li>For tests that span more than one chapter, a <b>score for each chapter</b> and a <b>Chapters to study</b> list showing every chapter below your pass mark, weakest first.</li>
+    <li>Click <b>Retake</b> to load a fresh, reshuffled version of the same test.</li>
+  </ul>
+  <h4>Practice without internet</h4>
+  <ul>
+    <li><b>Android (Chrome):</b> tap <b>Install app</b> above, or use the ⋮ menu, then <i>Install app</i> or <i>Add to Home screen</i>.</li>
+    <li><b>iPhone / iPad (Safari):</b> tap the Share button, then <i>Add to Home Screen</i>.</li>
+    <li><b>Windows / Mac (Chrome or Edge):</b> click <b>Install app</b>, or the install icon in the address bar. On a Mac with Safari 17 or later, use <i>File → Add to Dock</i>.</li>
+    <li>After it's installed, the app works fully offline. You can also <b>Download for offline use</b> (a ZIP): unzip it and open <code>index.html</code> in any browser, no internet needed.</li>
+  </ul>
+  <h4>About the pass mark</h4>
+  <p>Cisco doesn't publish a fixed passing score for {{EXAM_NUMBER}}, and it can change between exam versions. 80% is a sensible readiness target for practice. Raise it to 85–90% if you want a safety margin.</p>
+</div>
+</details>
+
+<div class="controls">
+  <div>
+    <label for="chap">Chapter test</label>
+    <select id="chap"></select>
+  </div>
+  <div>
+    <label for="passMark">Pass mark</label>
+    <select id="passMark" style="min-width:110px">
+      <option value="70">70%</option><option value="75">75%</option><option value="80" selected>80%</option><option value="85">85%</option><option value="90">90%</option>
+    </select>
+  </div>
+  <label class="chk"><input type="checkbox" id="shuffle"> Shuffle question order</label>
+  <button class="primary" id="start">Load test</button>
+</div>
+
+<details class="verify" id="verify"><summary>Answer verification — checked against Cisco docs and {{EXAM_NUMBER}} study sites</summary><div id="vbody"></div></details>
+
+<div id="results"></div>
+<div class="meta" id="meta"></div>
+<div id="quiz"><div class="empty">Choose a chapter and select <b>Load test</b>.</div></div>
+<div class="actions" id="actions" style="display:none">
+  <button id="showAll">Show all answers</button>
+  <button id="reset">Retake</button>
+  <button class="primary" id="submit">Submit test</button>
+</div>
+
+<div class="note">Questions are original practice items written to the topics in each chapter of the guide; they are not copied from the book. Answer order is randomized each time a test is loaded. Each answer shows the Cisco document or study site it was checked against. Not affiliated with or endorsed by Cisco or Cisco Press. Source and downloads: <a style="color:var(--accent)" href="{{REPO_URL}}" target="_blank" rel="noopener">{{REPO_URL_TEXT}}</a></div>
+</div>
+
+<script>
+// Format per question: [question, correctAnswer, wrong1, wrong2, wrong3, explanation]
+// Correct answer is listed first here; options are shuffled into A–D at load time.
+/*{{BANK_JS}}*/
+
+// Source catalog: id -> [title, site, type, url]
+// type: "cisco" = Cisco/Webex official documentation; "prep" = exam-prep / study site; "ref" = community or general reference
+/*{{SOURCES_JS}}*/
+
+const $=s=>document.querySelector(s);
+const LET=["A","B","C","D"];
+let current=[], submitted=false;
+
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const total=BANK.reduce((s,c)=>s+c.qs.length,0);
+
+(function fill(){
+  const sel=$("#chap");
+  const all=document.createElement("option");all.value="all";all.textContent=`All chapters — full exam (${total} questions)`;sel.appendChild(all);
+  const mix=document.createElement("option");mix.value="mix50";mix.textContent="All chapters — random 50";sel.appendChild(mix);
+  let part=null,grp;
+  BANK.forEach(c=>{
+    if(c.part!==part){part=c.part;grp=document.createElement("optgroup");grp.label=part;sel.appendChild(grp);}
+    const o=document.createElement("option");o.value=c.n;o.textContent=`Ch. ${c.n}: ${c.title} (${c.qs.length})`;grp.appendChild(o);
+  });
+  try{const last=localStorage.getItem("{{STORAGE_KEY}}");if(last)sel.value=last;}catch(e){}
+})();
+
+let multi=false;
+function build(){
+  const v=$("#chap").value;
+  try{localStorage.setItem("{{STORAGE_KEY}}",v);}catch(e){}
+  const list=(v==="all"||v==="mix50")?BANK.map(c=>c.n):[+v];
+  run(list, v==="mix50" ? 50 : 0, null);
+}
+function buildFrom(chList){ run(chList, 0, "Weak-chapter drill: Ch. "+chList.join(", ")); }
+let drillLabel=null;
+function run(chList, sample, label){
+  drillLabel=label;
+  let qs=[];
+  BANK.forEach(c=>{ if(chList.includes(c.n)) c.qs.forEach((q,qi)=>qs.push({ch:c.n,chTitle:c.title,q,ver:(VER[c.n]||[])[qi]||[["toc"],"c"]})); });
+  multi=chList.length>1;
+  if(sample) qs=shuffle(qs).slice(0,sample);
+  else if($("#shuffle").checked || label) qs=shuffle(qs);
+  current=qs.map(item=>{
+    const [text,right,...rest]=item.q; const expl=rest.pop();
+    const opts=shuffle([{t:right,ok:true},...rest.map(t=>({t,ok:false}))]);
+    return {...item,text,opts,expl,correct:opts.findIndex(o=>o.ok)};
+  });
+  submitted=false;
+  $("#results").style.display="none";
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function render(){
+    const quiz=$("#quiz"); quiz.innerHTML="";
+  current.forEach((it,i)=>{
+    const d=document.createElement("div"); d.className="q"; d.id="q"+i;
+    d.innerHTML=`<div class="qhead"><div class="qnum">${i+1}.</div><div class="qtext">${it.text}${multi?`<div class="qtag">Chapter ${it.ch}: ${it.chTitle}</div>`:""}</div></div>
+      <div class="opts">${it.opts.map((o,k)=>`<label class="opt" data-k="${k}"><input type="radio" name="r${i}" value="${k}"><span class="L">${LET[k]}.</span><span>${o.t}</span></label>`).join("")}</div>
+      <div class="qfoot"><button class="toggle" data-i="${i}">Show answer</button><span class="verdict"></span></div>
+      <div class="answer"><b>Answer: ${LET[it.correct]}</b> — ${it.opts[it.correct].t}<br><span style="color:var(--muted)">${it.expl}</span>${srcLine(it.ver)}</div>`;
+    quiz.appendChild(d);
+  });
+  quiz.querySelectorAll(".toggle").forEach(b=>b.onclick=()=>toggle(+b.dataset.i));
+  quiz.addEventListener("change",updateMeta);
+  $("#actions").style.display=current.length?"flex":"none";
+  $("#submit").disabled=false;
+  updateMeta();
+}
+
+const TYPE={cisco:"Cisco docs",prep:"Exam-prep site",ref:"Reference"};
+function srcLine(ver){
+  const [ids,st]=ver;
+  const badge=st==="v"?`<span class="badge b-v">Verified</span>`:`<span class="badge b-c">Concept</span>`;
+  const links=ids.map(id=>{const s=SRC[id];return s?`<a href="${s[3]}" target="_blank" rel="noopener">${s[1]} — ${s[0]}</a> <span class="t-${s[2]}">(${TYPE[s[2]]})</span>`:""}).join(" · ");
+  return `<div class="src">${badge}${st==="v"?"Verified against: ":"Topic reference: "}${links}</div>`;
+}
+(function verifyPanel(){
+  let v=0,c=0;const used={};
+  BANK.forEach(ch=>ch.qs.forEach((q,i)=>{const e=(VER[ch.n]||[])[i]||[["toc"],"c"];e[1]==="v"?v++:c++;e[0].forEach(id=>used[id]=(used[id]||0)+1);}));
+  const byType={cisco:0,prep:0,ref:0};Object.keys(used).forEach(id=>{if(SRC[id])byType[SRC[id][2]]+=used[id];});
+  const sites={};Object.keys(used).forEach(id=>{const s=SRC[id];if(!s)return;(sites[s[1]]=sites[s[1]]||[]).push(id);});
+  const order=Object.keys(sites).sort((a,b)=>sites[b].reduce((t,i)=>t+used[i],0)-sites[a].reduce((t,i)=>t+used[i],0));
+  $("#vbody").innerHTML=`
+   <div class="vgrid">
+     <div class="kv"><span class="pct-ok">Verified</span><br><b>${v}</b> of ${v+c} (${Math.round(v/(v+c)*100)}%)</div>
+     <div class="kv"><span class="pct-mid">Concept</span><br><b>${c}</b></div>
+     <div class="kv"><span class="t-cisco">Cisco doc citations</span><br><b>${byType.cisco}</b></div>
+     <div class="kv"><span class="t-prep">Exam-prep site citations</span><br><b>${byType.prep}</b></div>
+     <div class="kv">Other references<br><b>${byType.ref}</b></div>
+   </div>
+   <div class="kv"><b style="font-size:14px">Verified</b> means a cited page directly states the correct answer. <b style="font-size:14px">Concept</b> means the answer matches the chapter topic and standard Cisco behavior, but no single checked page states it in those words. Each question's source appears when you show its answer.</div>
+   <h4>Corrections made during verification</h4><ul>${CHANGES.map(x=>`<li>${x}</li>`).join("")}</ul>
+   <h4>Exam-prep sites used</h4><ul>{{PREP_SITES_HTML}}</ul>
+   <h4>All sources (${Object.keys(used).length})</h4>
+   <div class="srclist">${order.map(site=>sites[site].map(id=>`<div><a href="${SRC[id][3]}" target="_blank" rel="noopener">${SRC[id][0]}</a> <span class="t-${SRC[id][2]}">— ${site}</span></div>`).join("")).join("")}</div>`;
+})();
+
+function toggle(i,force){
+  const box=document.querySelector(`#q${i} .answer`), btn=document.querySelector(`#q${i} .toggle`);
+  const show=force!==undefined?force:!box.classList.contains("show");
+  box.classList.toggle("show",show); btn.textContent=show?"Hide answer":"Show answer";
+}
+function updateMeta(){
+  const answered=current.filter((_,i)=>document.querySelector(`input[name=r${i}]:checked`)).length;
+  $("#meta").innerHTML=current.length?`<span>${drillLabel?drillLabel+" · ":""}${current.length} questions</span><span>${answered} answered</span>`:"";
+}
+
+function submit(){
+  if(submitted) return;
+  const unanswered=current.filter((_,i)=>!document.querySelector(`input[name=r${i}]:checked`)).length;
+  if(unanswered && !$("#submit").dataset.confirm){
+    $("#submit").dataset.confirm="1"; $("#submit").textContent=`${unanswered} unanswered — submit anyway?`; return;
+  }
+  delete $("#submit").dataset.confirm; $("#submit").textContent="Submit test";
+  submitted=true;
+  let right=0,wrong=0,skip=0; const byCh={};
+  current.forEach((it,i)=>{
+    const q=$("#q"+i); q.classList.add("locked");
+    const sel=document.querySelector(`input[name=r${i}]:checked`);
+    q.querySelectorAll("input").forEach(x=>x.disabled=true);
+    const pick=sel?+sel.value:-1, ok=pick===it.correct;
+    const v=q.querySelector(".verdict");
+    q.querySelector(`.opt[data-k="${it.correct}"]`).classList.add("is-right");
+    if(pick>-1 && !ok) q.querySelector(`.opt[data-k="${pick}"]`).classList.add("is-wrong");
+    if(ok){right++;q.classList.add("correct");v.className="verdict ok";v.textContent="✓ Correct";}
+    else if(pick<0){skip++;q.classList.add("incorrect");v.className="verdict bad";v.textContent="✗ Not answered — correct answer is "+LET[it.correct];}
+    else {wrong++;q.classList.add("incorrect");v.className="verdict bad";v.textContent="✗ Incorrect — correct answer is "+LET[it.correct];}
+    const c=byCh[it.ch]||(byCh[it.ch]={t:it.chTitle,r:0,n:0}); c.n++; if(ok)c.r++;
+  });
+  showResults(right,wrong,skip,byCh);
+}
+
+function cls(p){return p>=80?"pct-ok":p>=60?"pct-mid":"pct-bad";}
+function showResults(r,w,s,byCh){
+  const n=r+w+s, pct=n?Math.round(r/n*1000)/10:0, pctW=n?Math.round(w/n*1000)/10:0, pctS=n?Math.round(s/n*1000)/10:0;
+  const mark=+$("#passMark").value, passed=pct>=mark;
+  const chs=Object.keys(byCh);
+  const pc=(c)=>Math.round(c.r/c.n*1000)/10;
+  const ccls=(p)=>p>=mark?"pct-ok":p>=mark-15?"pct-mid":"pct-bad";
+  let tbl="",study="";
+  if(chs.length>1){
+    tbl=`<table><thead><tr><th>Chapter</th><th style="text-align:right">Correct</th><th style="text-align:right">Score</th><th style="text-align:right">Status</th></tr></thead><tbody>`+
+      chs.sort((a,b)=>a-b).map(k=>{const c=byCh[k],p=pc(c);return `<tr><td>Ch. ${k}: ${c.t}</td><td class="num">${c.r}/${c.n}</td><td class="num ${ccls(p)}">${p}%</td><td class="num ${p>=mark?"pct-ok":"pct-bad"}">${p>=mark?"Pass":"Study"}</td></tr>`;}).join("")+`</tbody></table>`;
+    const weak=chs.filter(k=>pc(byCh[k])<mark).sort((a,b)=>pc(byCh[a])-pc(byCh[b]));
+    study=weak.length
+      ? `<div class="study"><h3 class="pct-bad">Chapters to study (${weak.length})</h3><ol>${weak.map(k=>`<li>Ch. ${k}: ${byCh[k].t} <span class="${ccls(pc(byCh[k]))}">— ${pc(byCh[k])}% (${byCh[k].r}/${byCh[k].n})</span></li>`).join("")}</ol><button id="drillWeak">Practice these chapters now</button></div>`
+      : `<div class="study ok"><h3 class="pct-ok">No weak chapters</h3><div class="kv">Every chapter in this test met your ${mark}% pass mark.</div></div>`;
+  } else if(chs.length===1 && !passed){
+    const k=chs[0];
+    study=`<div class="study"><h3 class="pct-bad">Chapter to study</h3><ol><li>Ch. ${k}: ${byCh[k].t} — review it, then click Retake.</li></ol></div>`;
+  }
+  const R=$("#results");
+  R.innerHTML=`<h2>Results</h2>
+    <div class="verdict-big ${passed?"v-pass":"v-fail"}">${passed?"PASS":"FAIL"}</div>
+    <div class="score"><div class="big ${passed?"pct-ok":"pct-bad"}">${pct}%</div>
+      <div class="kv">Final score<br><b>${r} / ${n}</b></div>
+      <div class="kv">Pass mark<br><b>${mark}%</b></div>
+      <div class="kv"><span class="pct-ok">Correct</span><br><b>${r}</b> <span>(${pct}%)</span></div>
+      <div class="kv"><span class="pct-bad">Incorrect</span><br><b>${w}</b> <span>(${pctW}%)</span></div>
+      <div class="kv">Unanswered<br><b>${s}</b> <span>(${pctS}%)</span></div></div>
+    <div class="bar"><div class="g" style="width:${pct}%"></div><div class="r" style="width:${pctW}%"></div><div class="u" style="width:${pctS}%"></div></div>
+    <div class="kv">${passed?`You scored ${pct}%, which is at or above your ${mark}% pass mark.`:`You scored ${pct}%, ${Math.round((mark-pct)*10)/10} points below your ${mark}% pass mark.`}</div>${study}${tbl}`;
+  R.style.display="block";
+  const dw=$("#drillWeak");
+  if(dw) dw.onclick=()=>{const weak=[...R.querySelectorAll(".study li")].map(li=>+li.textContent.match(/Ch\. (\d+)/)[1]);buildFrom(weak);};
+  $("#submit").disabled=true;
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+$("#start").onclick=build;
+$("#submit").onclick=submit;
+$("#reset").onclick=()=>{ if(drillLabel){ const l=[...new Set(current.map(c=>c.ch))]; buildFrom(l);} else build(); };
+$("#showAll").onclick=()=>{
+  const anyHidden=[...document.querySelectorAll(".answer")].some(a=>!a.classList.contains("show"));
+  current.forEach((_,i)=>toggle(i,anyHidden));
+  $("#showAll").textContent=anyHidden?"Hide all answers":"Show all answers";
+};
+
+/* ---- App shell: help, install, offline ---- */
+$("#helpBtn").onclick=()=>{const h=$("#help");h.open=!h.open;if(h.open)h.scrollIntoView({behavior:"smooth"});};
+let deferredPrompt=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;$("#installBtn").style.display="inline-block";});
+$("#installBtn").onclick=async()=>{ if(!deferredPrompt){$("#help").open=true;$("#help").scrollIntoView({behavior:"smooth"});return;} deferredPrompt.prompt(); try{await deferredPrompt.userChoice;}catch(e){} deferredPrompt=null; $("#installBtn").style.display="none"; };
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent), standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+if(isIOS && !standalone){ const b=$("#installBtn"); b.style.display="inline-block"; b.textContent="Install on iPhone"; }
+function net(){ const n=$("#netStatus"); if(location.protocol==="file:"){n.textContent="● offline copy";return;} n.textContent=navigator.onLine?(standalone?"● installed app":"● online"):"● offline (cached)"; }
+window.addEventListener("online",net);window.addEventListener("offline",net);net();
+if(location.protocol==="file:"){ $("#dlLink").style.display="none"; }
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){ navigator.serviceWorker.register("{{ASSET_PREFIX}}sw.js").catch(()=>{}); }
+</script>
+</body>
+</html>

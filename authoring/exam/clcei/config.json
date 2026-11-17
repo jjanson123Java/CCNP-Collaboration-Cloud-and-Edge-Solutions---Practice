@@ -1,0 +1,17 @@
+{
+  "folder": "",
+  "page_title": "CLCEI 300-820 — How Much Do I Know?",
+  "meta_description": "Free chapter-by-chapter practice tests for the CCNP Collaboration Cloud and Edge Solutions (CLCEI 300-820) exam, with extra sections for the current CLHCT v2.0 topics. Works online, offline, and as an installable app.",
+  "manifest_name": "CCNP CLCEI 300-820 Practice Tests",
+  "app_short_name": "CLCEI Practice",
+  "eyebrow": "Cisco Press · Official Cert Guide",
+  "h1_title_html": "CCNP Collaboration Cloud &amp; Edge (CLCEI 300-820)",
+  "study_guide_url": "https://learning.oreilly.com/library/view/ccnp-collaboration-cloud/9780136733867/",
+  "study_guide_link_text": "CCNP Collaboration Cloud and Edge Solutions CLCEI 300-820 Official Cert Guide — read on O'Reilly Learning",
+  "offline_zip_url": "https://github.com/jjanson123Java/CCNP-Collaboration-Cloud-and-Edge-Solutions---Practice/raw/main/download/CLCEI-Practice-Offline.zip",
+  "repo_url": "https://github.com/jjanson123Java/CCNP-Collaboration-Cloud-and-Edge-Solutions---Practice",
+  "exam_number": "300-820",
+  "storage_key": "clcei-ch",
+  "other_exam_links_html": "<a class=\"btn\" href=\"https://jjanson123java.github.io/CCNP-CLCOR-Practice/\">CLCOR 350-801 test</a>",
+  "prep_sites_html": "<li><strong>Cisco Expressway documentation</strong> — current administration, clustering, port usage, and MRA guides.</li><li><strong>Webex Help Center</strong> — current Directory, Calendar, Calling, Video Mesh, identity, survivability, and security guidance.</li><li><strong>Webex for Developers</strong> — current API and programmability documentation.</li><li><strong>Official Cisco exam topics</strong> — CLHCT 300-820 v2.0 domain coverage.</li><li><strong>No braindump sites were used.</strong></li>"
+}

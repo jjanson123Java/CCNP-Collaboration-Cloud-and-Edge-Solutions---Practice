@@ -1,0 +1,315 @@
+{
+  "book": {
+    "title": "CCNP Collaboration Cloud and Edge Solutions CLCEI 300-820 Official Cert Guide",
+    "authors": "Jason Ball, Thomas Arneson",
+    "publisher": "Cisco Press",
+    "published": "November 2021",
+    "isbn": "9780136733867",
+    "public_toc_url": "https://www.oreilly.com/library/view/ccnp-collaboration-cloud/9780136733867/",
+    "exam_written_for": "CLCEI 300-820 v1.0"
+  },
+  "current_exam": {
+    "name": "Implementing Cisco Collaboration Hybrid and Cloud Technologies (CLHCT 300-820) v2.0",
+    "effective": "2026-02-03",
+    "official_topics_pdf": "https://learningcontent.cisco.com/documents/marketing/exam-topics/300-820-CLHCT-v2.0.pdf",
+    "note": "Chapters 22-27 are provisional. Confirm every topic against the official v2.0 PDF; drop or rename any that do not match."
+  },
+  "questions_per_chapter": {
+    "book_chapters_1_21": "6-7",
+    "v2_chapters_22_27": "5-6"
+  },
+  "chapters": [
+    {
+      "n": 1,
+      "part": "Part I: Key Concepts",
+      "title": "Introduction to the Cisco Expressway Solution",
+      "sections": [
+        "VCS to Expressway migration",
+        "SIP on the Expressway",
+        "H.323 on the Expressways",
+        "Expressway licensing (book: option/release keys; current: Smart Licensing, license consumption, Expressway Select)"
+      ]
+    },
+    {
+      "n": 2,
+      "part": "Part I: Key Concepts",
+      "title": "Configure Key Cisco Expressway Settings",
+      "sections": [
+        "Expressway deployment on VM (OVA sizes)",
+        "Service Setup Wizard via web interface",
+        "Expressway system configuration (DNS, NTP, interfaces, QoS, firewall rules)",
+        "Backup and restore procedure"
+      ]
+    },
+    {
+      "n": 3,
+      "part": "Part I: Key Concepts",
+      "title": "Initial Configuration Settings on the Cisco Expressway",
+      "sections": [
+        "H.323 settings",
+        "SIP and domain settings",
+        "Protocol interworking (H.323<->SIP, IPv4<->IPv6)",
+        "Verifying registration"
+      ]
+    },
+    {
+      "n": 4,
+      "part": "Part I: Key Concepts",
+      "title": "Regular Expressions on the Cisco Expressway",
+      "sections": [
+        "Use cases for regular expressions (transforms, search rules, allow/deny lists)",
+        "Regex syntax: . * + ? \\d [ ] ( ) \\1 ^ $ (?!) ",
+        "Check Pattern tool"
+      ]
+    },
+    {
+      "n": 5,
+      "part": "Part I: Key Concepts",
+      "title": "Security Overview on the Cisco Expressway",
+      "sections": [
+        "SIP media encryption mode (Auto, Force encrypted, Force unencrypted, Best effort)",
+        "Certificates (CSR, CN/SAN, trusted CA list)",
+        "Administrator authentication (local, remote/LDAP)"
+      ]
+    },
+    {
+      "n": 6,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Registration on Cisco Expressway",
+      "sections": [
+        "Registration conflict policy (H.323)",
+        "Registration restriction policy (None, Allow list, Deny list, Policy service)",
+        "Registration authentication (device authentication, local database)",
+        "Subzones and membership rules"
+      ]
+    },
+    {
+      "n": 7,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Cisco Expressway Call Processing Order",
+      "sections": [
+        "Transforms (pre-search transforms, search rule transforms)",
+        "Call Policy / Admin Policy (CPL)",
+        "User Policy / FindMe",
+        "Search history and the Locate tool"
+      ]
+    },
+    {
+      "n": 8,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Bandwidth Management",
+      "sections": [
+        "Subzone bandwidth management",
+        "Links and pipes",
+        "Call control using pipes"
+      ]
+    },
+    {
+      "n": 9,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Multisite Collaboration Solutions",
+      "sections": [
+        "Dial plan elements (zones, search rules, transforms, priorities)",
+        "Flat vs structured dial plans",
+        "Hierarchical video network / directory Expressway",
+        "Configuring neighbor zones (hop count)"
+      ]
+    },
+    {
+      "n": 10,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Multisite and Business-to-Business (B2B) Collaboration Solutions",
+      "sections": [
+        "Firewall issues in collaboration",
+        "NAT issues in collaboration",
+        "STUN, TURN and ICE",
+        "Expressway media traversal (Assent, H.460.18/19)",
+        "DNS zones (SRV records for SIP and H.323)",
+        "Toll fraud prevention (no custom CPL)"
+      ]
+    },
+    {
+      "n": 11,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Clustering Expressways",
+      "sections": [
+        "Clustering requirements (peers, versions, latency)",
+        "DNS and clustering",
+        "Zones and clustering"
+      ]
+    },
+    {
+      "n": 12,
+      "part": "Part II: Cisco Expressway Configurations",
+      "title": "Troubleshooting a Business-to-Business (B2B) Collaboration Solution",
+      "sections": [
+        "Troubleshooting registration issues",
+        "Troubleshooting calling issues",
+        "Troubleshooting DNS issues",
+        "Troubleshooting certificate issues",
+        "Diagnostic logging, tcpdump and other tools"
+      ]
+    },
+    {
+      "n": 13,
+      "part": "Part III: Mobile and Remote Access",
+      "title": "Introduction to Mobile and Remote Access (MRA)",
+      "sections": [
+        "Purpose of MRA",
+        "Components of MRA",
+        "Considerations for MRA deployment"
+      ]
+    },
+    {
+      "n": 14,
+      "part": "Part III: Mobile and Remote Access",
+      "title": "Configure an MRA Solution",
+      "sections": [
+        "DNS records (_collab-edge, _cisco-uds)",
+        "Certificates (Expressway-C/E SANs)",
+        "Cisco Unified CM settings for MRA",
+        "Unified Communications configuration on Expressways",
+        "HTTP allow list",
+        "Unified Communications traversal zones",
+        "SIP trunk security profile on CUCM"
+      ]
+    },
+    {
+      "n": 15,
+      "part": "Part III: Mobile and Remote Access",
+      "title": "Troubleshoot an MRA Solution",
+      "sections": [
+        "General MRA troubleshooting techniques",
+        "Registration and certificate issues",
+        "Cisco Jabber sign-in issues",
+        "Other specific issues"
+      ]
+    },
+    {
+      "n": 16,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Introduction to Cisco Cloud Collaboration",
+      "sections": [
+        "Cloud collaboration solutions",
+        "Cisco Webex components",
+        "Cisco Webex Hybrid Services (connector host/management connector)"
+      ]
+    },
+    {
+      "n": 17,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Configure Webex Hybrid Directory Service",
+      "sections": [
+        "Deployment model",
+        "Deployment requirements",
+        "Infrastructure requirements",
+        "Active Directory configuration and synchronization (Directory Connector)",
+        "Webex user service assignment"
+      ]
+    },
+    {
+      "n": 18,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Configure Webex Hybrid Calendar Service",
+      "sections": [
+        "Calendar service operation",
+        "Expressway-based calendar connector (Exchange)",
+        "Google Calendar deployment in the cloud",
+        "Office 365",
+        "One Button to Push (OBTP)"
+      ]
+    },
+    {
+      "n": 19,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Configure Webex Hybrid Message Service",
+      "sections": [
+        "Deployment models",
+        "Deployment requirements",
+        "Expressway requirements",
+        "Certificates",
+        "Registering the Expressway connector to the Webex cloud",
+        "IM and Presence configuration",
+        "Managing the Hybrid Message Service"
+      ]
+    },
+    {
+      "n": 20,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Webex Edge Solutions",
+      "sections": [
+        "Webex Edge for Devices",
+        "Webex Edge for Calling",
+        "Webex Edge Audio",
+        "Webex Edge Connect",
+        "Webex Video Mesh (signaling and media flows, clustering, ports)"
+      ]
+    },
+    {
+      "n": 21,
+      "part": "Part IV: Cisco Webex Technologies",
+      "title": "Cisco Jabber for Cloud and Hybrid Deployments with Cisco Webex Messenger",
+      "sections": [
+        "Deployment requirements",
+        "Cisco Unified CM requirements"
+      ]
+    },
+    {
+      "n": 22,
+      "part": "Part V: CLHCT v2.0 Additions (not in book)",
+      "title": "v2.0: SSO, Directory Sync, SCIM and RBAC",
+      "sections": [
+        "Configure SSO (SAML IdP with Control Hub)",
+        "Configure directory synchronization",
+        "Troubleshoot cloud user management: Directory Connector, SCIM, RBAC"
+      ]
+    },
+    {
+      "n": 23,
+      "part": "Part V: CLHCT v2.0 Additions (not in book)",
+      "title": "v2.0: Local Gateway and Site Survivability",
+      "sections": [
+        "Certificate-based Local Gateway",
+        "Registration-based Local Gateway",
+        "Configure site survivability (Survivability Gateway)"
+      ]
+    },
+    {
+      "n": 24,
+      "part": "Part V: CLHCT v2.0 Additions (not in book)",
+      "title": "v2.0: Control Hub Calling Features",
+      "sections": [
+        "Hot desking",
+        "Auto attendant and other Control Hub calling features",
+        "Hybrid calendar with cloud mail services"
+      ]
+    },
+    {
+      "n": 25,
+      "part": "Part V: CLHCT v2.0 Additions (not in book)",
+      "title": "v2.0: Hybrid and Migration to the Cloud",
+      "sections": [
+        "Hybrid deployments and migration from on-premises to Webex Calling"
+      ]
+    },
+    {
+      "n": 26,
+      "part": "Part V: CLHCT v2.0 Additions (not in book)",
+      "title": "v2.0: Network Diagnostics and Security",
+      "sections": [
+        "Diagnose bandwidth/QoS issues with Webex Suite and endpoints",
+        "Administration, endpoint and meetings compliance/security",
+        "Webex cloud security realm architecture"
+      ]
+    },
+    {
+      "n": 27,
+      "part": "Part V: CLHCT v2.0 Additions (not in book)",
+      "title": "v2.0: AI Features, APIs and Programmability",
+      "sections": [
+        "AI features in cloud collaboration",
+        "Webex APIs and programmability"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "folder": "",
+  "page_title": "CLCOR 350-801 — How Much Do I Know?",
+  "meta_description": "Free chapter-by-chapter practice tests for the CCNP & CCIE Collaboration Core (CLCOR 350-801) exam. Works online, offline, and as an installable app.",
+  "manifest_name": "CCNP CLCOR 350-801 Practice Tests",
+  "app_short_name": "CLCOR Practice",
+  "eyebrow": "Cisco Press · Official Cert Guide, 2nd Ed.",
+  "h1_title_html": "CCNP &amp; CCIE Collaboration Core (CLCOR 350-801)",
+  "study_guide_url": "https://learning.oreilly.com/library/view/ccnp-and-ccie/9780138200893/",
+  "study_guide_link_text": "CCNP and CCIE Collaboration Core CLCOR 350-801 Official Cert Guide, 2nd Edition — read on O'Reilly Learning",
+  "offline_zip_url": "https://github.com/jjanson123Java/CCNP-CLCOR-Practice/raw/main/download/CLCOR-Practice-Offline.zip",
+  "repo_url": "https://github.com/jjanson123Java/CCNP-CLCOR-Practice",
+  "exam_number": "350-801",
+  "storage_key": "clcor-ch",
+  "prep_sites_html": "<li><b>OpenExamPrep</b>: free, independent 350-801 study guide (not affiliated with Cisco).</li><li><b>Cisco Press</b>: official CLCOR chapter excerpts, including the globalized call routing chapter's own quiz on the NANP wildcard.</li><li><b>CBT Nuggets</b>, <b>learncisco.net</b>, <b>Global Knowledge</b>: Cisco training providers.</li><li>Braindump sites (such as ExamTopics) were <b>not</b> used. They post leaked live-exam questions, which breaks Cisco's exam agreement, and their community answers are often wrong.</li>",
+  "other_exam_links_html": "<a class=\"btn\" href=\"clcei/\">CLCEI 300-820 test</a>"
+}
