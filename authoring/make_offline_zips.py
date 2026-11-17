@@ -12,10 +12,15 @@ def pack(zip_name, folder_name, page_path):
     html = html.replace('register("../sw.js")', 'register("sw.js")')
     out = os.path.join(repo, "download", zip_name)
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    with zipfile.ZipFile(out, "w", zipfile.ZIP_DEFLATED) as z:
-        z.writestr(f"{folder_name}/index.html", html)
-        z.write(os.path.join(repo, "README.md"), f"{folder_name}/README.md")
+    def add(z, name, data):
+        info = zipfile.ZipInfo(name, date_time=(2026, 1, 1, 0, 0, 0))
+        info.compress_type = zipfile.ZIP_DEFLATED
+        info.external_attr = 0o100644 << 16
+        z.writestr(info, data)
+    with zipfile.ZipFile(out, "w") as z:
+        add(z, f"{folder_name}/index.html", html.encode("utf-8"))
+        add(z, f"{folder_name}/README.md", open(os.path.join(repo, "README.md"), "rb").read())
         for f in sorted(os.listdir(os.path.join(repo, "icons"))):
-            z.write(os.path.join(repo, "icons", f), f"{folder_name}/icons/{f}")
+            add(z, f"{folder_name}/icons/{f}", open(os.path.join(repo, "icons", f), "rb").read())
     print("wrote", out)
 pack("CLCEI-Practice-Offline.zip", "CLCEI-Practice", os.path.join(repo, "index.html"))
