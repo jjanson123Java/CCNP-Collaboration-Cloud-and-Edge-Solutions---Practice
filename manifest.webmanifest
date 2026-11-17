@@ -1,0 +1,33 @@
+{
+  "name": "CCNP CLCEI 300-820 Practice Tests",
+  "short_name": "CLCEI Practice",
+  "description": "Free chapter-by-chapter practice tests for the CCNP Collaboration Cloud and Edge Solutions (CLCEI 300-820) exam, with extra sections for the current CLHCT v2.0 topics. Works online, offline, and as an installable app.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#0b1220",
+  "theme_color": "#0b1220",
+  "categories": [
+    "education",
+    "productivity"
+  ],
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "icons/maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ]
+}

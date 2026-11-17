@@ -1,0 +1,3124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>CLCEI 300-820 — How Much Do I Know?</title>
+<meta name="description" content="Free chapter-by-chapter practice tests for the CCNP Collaboration Cloud and Edge Solutions (CLCEI 300-820) exam, with extra sections for the current CLHCT v2.0 topics. Works online, offline, and as an installable app.">
+<meta name="theme-color" content="#0b1220">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="CLCEI Practice">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&family=Source+Serif+4:opsz,wght@8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b1220; --panel:#111a2e; --panel2:#16213a; --line:#23304d;
+  --text:#d8deea; --muted:#8b97b0; --accent:#5fa8c9; --accent2:#3f7f9e;
+  --ok:#4cc38a; --okbg:rgba(76,195,138,.10); --bad:#ef6b6b; --badbg:rgba(239,107,107,.10);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:15px/1.55 "IBM Plex Sans",system-ui,sans-serif}
+.wrap{max-width:900px;margin:0 auto;padding:32px 20px 80px}
+header h1{font-family:"Source Serif 4",Georgia,serif;font-weight:600;font-size:30px;margin:0 0 4px;letter-spacing:.2px}
+header .sub{color:var(--muted);font-size:14px}
+.eyebrow{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.controls{margin:24px 0;padding:18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;display:flex;flex-wrap:wrap;gap:14px;align-items:end}
+.controls label{display:block;font-size:12px;color:var(--muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:.08em}
+select,button{font:inherit;color:var(--text)}
+select{background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:9px 12px;min-width:340px;max-width:100%}
+.chk{display:flex;align-items:center;gap:8px;color:var(--muted);font-size:14px;padding-bottom:9px}
+button{cursor:pointer;border-radius:7px;border:1px solid var(--line);background:var(--panel2);padding:9px 16px}
+button:hover{border-color:var(--accent2)}
+button.primary{background:var(--accent2);border-color:var(--accent2);color:#fff;font-weight:600}
+button.primary:hover{background:var(--accent)}
+.meta{display:flex;justify-content:space-between;align-items:center;color:var(--muted);font-size:13px;margin:6px 2px 14px}
+.q{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px 20px;margin-bottom:14px}
+.q.correct{border-color:rgba(76,195,138,.45)}
+.q.incorrect{border-color:rgba(239,107,107,.45)}
+.qhead{display:flex;gap:12px;align-items:flex-start}
+.qnum{font-family:"IBM Plex Mono",monospace;color:var(--accent);font-size:13px;min-width:34px;padding-top:2px}
+.qtext{font-weight:500;flex:1}
+.qtag{font-size:11px;color:var(--muted);margin-top:3px;font-weight:400}
+.opts{margin:12px 0 0 46px;display:grid;gap:6px}
+.opt{display:flex;gap:10px;align-items:flex-start;padding:8px 10px;border-radius:7px;border:1px solid transparent;cursor:pointer}
+.opt:hover{background:var(--panel2)}
+.opt input{margin-top:4px;accent-color:var(--accent)}
+.opt .L{font-family:"IBM Plex Mono",monospace;color:var(--muted);min-width:18px}
+.opt.is-right{color:var(--ok);background:var(--okbg);border-color:rgba(76,195,138,.35)}
+.opt.is-right .L{color:var(--ok)}
+.opt.is-wrong{color:var(--bad);background:var(--badbg);border-color:rgba(239,107,107,.35)}
+.opt.is-wrong .L{color:var(--bad)}
+.locked .opt{cursor:default}.locked .opt:hover{background:none}
+.qfoot{margin:10px 0 0 46px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.toggle{font-size:13px;padding:5px 12px;background:transparent}
+.verdict{font-weight:600;font-size:14px}
+.verdict.ok{color:var(--ok)}.verdict.bad{color:var(--bad)}
+.answer{display:none;margin:10px 0 0 46px;padding:10px 14px;border-left:3px solid var(--accent2);background:var(--panel2);border-radius:0 7px 7px 0;font-size:14px}
+.answer.show{display:block}
+.answer b{color:var(--ok)}
+.actions{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+#results{display:none;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:24px;margin-bottom:22px}
+#results h2{font-family:"Source Serif 4",Georgia,serif;font-weight:600;margin:0 0 14px;font-size:22px}
+.score{display:flex;gap:28px;flex-wrap:wrap;align-items:baseline}
+.big{font-family:"Source Serif 4",Georgia,serif;font-size:52px;line-height:1}
+.kv{color:var(--muted);font-size:14px}.kv b{color:var(--text);font-size:18px}
+.bar{height:8px;background:var(--panel2);border-radius:4px;overflow:hidden;margin:16px 0 6px;display:flex}
+.bar .g{background:var(--ok)}.bar .r{background:var(--bad)}.bar .u{background:#4a5672}
+table{width:100%;border-collapse:collapse;margin-top:18px;font-size:14px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line)}
+th{color:var(--muted);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.06em}
+td.num{font-family:"IBM Plex Mono",monospace;text-align:right}
+.pct-ok{color:var(--ok)}.pct-bad{color:var(--bad)}.pct-mid{color:#d9b25f}
+.note{color:var(--muted);font-size:12.5px;margin-top:30px;border-top:1px solid var(--line);padding-top:14px}
+.src{margin-top:8px;font-size:12.5px;color:var(--muted)}
+.src a{color:var(--accent);text-decoration:none}.src a:hover{text-decoration:underline}
+.badge{display:inline-block;font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;padding:1px 7px;border-radius:4px;margin-right:6px;vertical-align:1px}
+.b-v{background:rgba(76,195,138,.14);color:var(--ok);border:1px solid rgba(76,195,138,.35)}
+.b-c{background:rgba(217,178,95,.12);color:#d9b25f;border:1px solid rgba(217,178,95,.35)}
+.t-cisco{color:#8fc3db}.t-prep{color:#c7a8e8}.t-ref{color:var(--muted)}
+details.verify{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin:-8px 0 22px}
+details.verify summary{cursor:pointer;font-weight:600;list-style:none}
+details.verify summary::-webkit-details-marker{display:none}
+details.verify summary::before{content:"▸ ";color:var(--accent)}
+details.verify[open] summary::before{content:"▾ "}
+.vgrid{display:flex;gap:26px;flex-wrap:wrap;margin:14px 0 6px}
+.vgrid .kv b{font-size:20px}
+.verify ul{margin:8px 0 0 18px;padding:0;font-size:13.5px}.verify li{margin-bottom:5px}
+.verify h4{margin:16px 0 4px;font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em;font-weight:500}
+.srclist{columns:2;column-gap:28px;font-size:12.5px;margin-top:6px}
+.srclist div{break-inside:avoid;margin-bottom:5px}
+.srclist a{color:var(--text);text-decoration:none}.srclist a:hover{color:var(--accent)}
+@media(max-width:700px){.srclist{columns:1}}
+.guide{margin-top:10px;font-size:14px;color:var(--text)}
+.guide a{color:var(--accent);text-decoration:none;border-bottom:1px solid rgba(95,168,201,.35)}
+.guide a:hover{border-bottom-color:var(--accent)}
+.guide span{color:var(--muted);font-size:12.5px}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:16px}
+.toolbar button,.btn{font-size:13px;padding:7px 13px}
+.btn{display:inline-block;border-radius:7px;border:1px solid var(--line);background:var(--panel2);color:var(--text);text-decoration:none}
+.btn:hover{border-color:var(--accent2)}
+#installBtn{display:none}
+.net{font-size:12px;color:var(--muted);margin-left:auto;font-family:"IBM Plex Mono",monospace}
+.help{font-size:14px}.help ol,.help ul{margin:6px 0 0 20px;padding:0}.help li{margin-bottom:6px}
+.help p{margin:6px 0;color:var(--muted)}
+.help code{font-family:"IBM Plex Mono",monospace;background:var(--panel2);padding:1px 5px;border-radius:4px}
+.verdict-big{display:inline-block;font-family:"IBM Plex Mono",monospace;font-weight:600;font-size:22px;letter-spacing:.12em;padding:6px 16px;border-radius:8px;margin-bottom:14px}
+.v-pass{color:var(--ok);background:var(--okbg);border:1px solid rgba(76,195,138,.5)}
+.v-fail{color:var(--bad);background:var(--badbg);border:1px solid rgba(239,107,107,.5)}
+.study{margin-top:18px;padding:14px 16px;border:1px solid rgba(239,107,107,.35);border-radius:8px;background:rgba(239,107,107,.05)}
+.study.ok{border-color:rgba(76,195,138,.35);background:rgba(76,195,138,.05)}
+.study h3{margin:0 0 8px;font-size:15px}
+.study ol{margin:0 0 0 20px;padding:0;font-size:14px}.study li{margin-bottom:4px}
+.study button{margin-top:10px;font-size:13px;padding:6px 12px}
+@media(max-width:600px){select{min-width:0;width:100%}.controls>div{width:100%}.wrap{padding:20px 14px 60px}.opts,.qfoot,.answer{margin-left:0}}
+.empty{color:var(--muted);text-align:center;padding:40px}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Cisco Press · Official Cert Guide</div>
+  <h1>CCNP Collaboration Cloud &amp; Edge (CLCEI 300-820)</h1>
+  <div class="sub">How much do I know? — practice tests by chapter</div>
+  <div class="guide">📘 Study guide: <a href="https://learning.oreilly.com/library/view/ccnp-collaboration-cloud/9780136733867/" target="_blank" rel="noopener">CCNP Collaboration Cloud and Edge Solutions CLCEI 300-820 Official Cert Guide — read on O'Reilly Learning</a> <span>(requires an O'Reilly login)</span></div>
+  <div class="toolbar">
+    <button id="helpBtn">How to use</button>
+    <button id="installBtn">Install app</button>
+    <a class="btn" id="dlLink" href="https://github.com/jjanson123Java/CCNP-Collaboration-Cloud-and-Edge-Solutions---Practice/raw/main/download/CLCEI-Practice-Offline.zip">Download for offline use</a>
+    <a class="btn" href="https://jjanson123java.github.io/CCNP-CLCOR-Practice/">CLCOR 350-801 test</a>
+    <a class="btn" href="https://github.com/jjanson123Java/CCNP-Collaboration-Cloud-and-Edge-Solutions---Practice" target="_blank" rel="noopener">GitHub</a>
+    <span id="netStatus" class="net"></span>
+  </div>
+</header>
+
+<details class="verify" id="help">
+<summary>How to use these practice tests</summary>
+<div class="help">
+  <h4>Taking a test</h4>
+  <ol>
+    <li>Pick a test from the <b>Chapter test</b> list. You can choose a single chapter (Ch. 1–28, grouped by book part), <b>All chapters — full exam</b> (all 161 questions), or <b>All chapters — random 50</b>.</li>
+    <li>Optionally tick <b>Shuffle question order</b>, and choose a <b>Pass mark</b> (80% by default).</li>
+    <li>Click <b>Load test</b>. Each question has four answers, A–D. Answer order is shuffled every time you load a test.</li>
+    <li>Use <b>Show answer</b> on any question to see the correct answer, an explanation, and the Cisco document or study site it was checked against. Use <b>Show all answers</b> to study instead of testing.</li>
+    <li>Click <b>Submit test</b>. If any questions are blank you'll be asked to confirm. Correct answers turn <span class="pct-ok">green</span> and wrong picks turn <span class="pct-bad">red</span>.</li>
+  </ol>
+  <h4>Reading your results</h4>
+  <ul>
+    <li>A <b>PASS</b> or <b>FAIL</b> verdict against your chosen pass mark, your score (for example 41/50), and the percentage correct, incorrect and unanswered.</li>
+    <li>For tests that span more than one chapter, a <b>score for each chapter</b> and a <b>Chapters to study</b> list showing every chapter below your pass mark, weakest first.</li>
+    <li>Click <b>Retake</b> to load a fresh, reshuffled version of the same test.</li>
+  </ul>
+  <h4>Practice without internet</h4>
+  <ul>
+    <li><b>Android (Chrome):</b> tap <b>Install app</b> above, or use the ⋮ menu, then <i>Install app</i> or <i>Add to Home screen</i>.</li>
+    <li><b>iPhone / iPad (Safari):</b> tap the Share button, then <i>Add to Home Screen</i>.</li>
+    <li><b>Windows / Mac (Chrome or Edge):</b> click <b>Install app</b>, or the install icon in the address bar. On a Mac with Safari 17 or later, use <i>File → Add to Dock</i>.</li>
+    <li>After it's installed, the app works fully offline. You can also <b>Download for offline use</b> (a ZIP): unzip it and open <code>index.html</code> in any browser, no internet needed.</li>
+  </ul>
+  <h4>About the pass mark</h4>
+  <p>Cisco doesn't publish a fixed passing score for 300-820, and it can change between exam versions. 80% is a sensible readiness target for practice. Raise it to 85–90% if you want a safety margin.</p>
+</div>
+</details>
+
+<div class="controls">
+  <div>
+    <label for="chap">Chapter test</label>
+    <select id="chap"></select>
+  </div>
+  <div>
+    <label for="passMark">Pass mark</label>
+    <select id="passMark" style="min-width:110px">
+      <option value="70">70%</option><option value="75">75%</option><option value="80" selected>80%</option><option value="85">85%</option><option value="90">90%</option>
+    </select>
+  </div>
+  <label class="chk"><input type="checkbox" id="shuffle"> Shuffle question order</label>
+  <button class="primary" id="start">Load test</button>
+</div>
+
+<details class="verify" id="verify"><summary>Answer verification — checked against Cisco docs and 300-820 study sites</summary><div id="vbody"></div></details>
+
+<div id="results"></div>
+<div class="meta" id="meta"></div>
+<div id="quiz"><div class="empty">Choose a chapter and select <b>Load test</b>.</div></div>
+<div class="actions" id="actions" style="display:none">
+  <button id="showAll">Show all answers</button>
+  <button id="reset">Retake</button>
+  <button class="primary" id="submit">Submit test</button>
+</div>
+
+<div class="note">Questions are original practice items written to the topics in each chapter of the guide; they are not copied from the book. Answer order is randomized each time a test is loaded. Each answer shows the Cisco document or study site it was checked against. Not affiliated with or endorsed by Cisco or Cisco Press. Source and downloads: <a style="color:var(--accent)" href="https://github.com/jjanson123Java/CCNP-Collaboration-Cloud-and-Edge-Solutions---Practice" target="_blank" rel="noopener">github.com/jjanson123Java/CCNP-Collaboration-Cloud-and-Edge-Solutions---Practice</a></div>
+</div>
+
+<script>
+// Format per question: [question, correctAnswer, wrong1, wrong2, wrong3, explanation]
+// Correct answer is listed first here; options are shuffled into A–D at load time.
+const BANK = [
+  {
+    "n": 1,
+    "part": "Part I: Key Concepts",
+    "title": "Introduction to the Cisco Expressway Solution",
+    "qs": [
+      [
+        "Which current licensing system does Expressway X15 use to register and report license consumption?",
+        "Cisco Smart Licensing",
+        "Option keys only",
+        "A local PLM server",
+        "A node-locked PAK file",
+        "Current Expressway releases use Cisco Smart Licensing; option and release keys describe older product behavior."
+      ],
+      [
+        "What is the primary role of an Expressway-C in a standard traversal pair?",
+        "It provides the internal-side traversal client and connects to internal collaboration systems",
+        "It terminates public DNS zones for the internet",
+        "It replaces Unified CM call processing",
+        "It acts only as a media storage server",
+        "Expressway-C sits on the internal side and establishes traversal connectivity toward Expressway-E."
+      ],
+      [
+        "What is the primary role of Expressway-E in a traversal pair?",
+        "It provides the external-facing traversal server at the network edge",
+        "It synchronizes Active Directory users",
+        "It hosts Unified CM device pools",
+        "It provides voicemail storage",
+        "Expressway-E is the edge-facing traversal server used for external B2B and remote-access connectivity."
+      ],
+      [
+        "Which two signaling protocols are natively supported for endpoint registration and calls on Expressway?",
+        "SIP and H.323",
+        "SCCP and MGCP only",
+        "XMPP and SMTP",
+        "RTP and SNMP",
+        "Expressway supports both SIP and H.323 signaling and can interwork between them when configured."
+      ],
+      [
+        "A team is migrating from Cisco VCS to Expressway. What should be checked first?",
+        "Feature, licensing, and software-version compatibility for the target Expressway release",
+        "Whether every endpoint supports SCCP",
+        "Whether DNS can be removed",
+        "Whether all calls can use multicast",
+        "A migration should begin with supported-version, feature, and licensing checks rather than assuming VCS settings map unchanged."
+      ],
+      [
+        "Why is an Expressway traversal pair commonly deployed across a firewall?",
+        "To enable controlled signaling and media traversal without broadly exposing internal systems",
+        "To eliminate the need for certificates",
+        "To convert all calls to analog",
+        "To replace the enterprise firewall",
+        "The pair creates controlled traversal paths between internal collaboration services and external networks."
+      ]
+    ]
+  },
+  {
+    "n": 2,
+    "part": "Part I: Key Concepts",
+    "title": "Configure Key Cisco Expressway Settings",
+    "qs": [
+      [
+        "Before deploying an Expressway virtual machine, what must match the selected OVA size?",
+        "The reserved CPU, memory, and disk resources",
+        "The number of DNS SRV records",
+        "The SIP domain length",
+        "The administrator password age",
+        "Expressway VM sizes define required virtual resources; undersizing or changing unsupported resources can invalidate the deployment."
+      ],
+      [
+        "Which service should provide a stable time source to every Expressway peer?",
+        "NTP",
+        "TFTP",
+        "STUN",
+        "XMPP",
+        "Accurate NTP is essential for logs, certificates, authentication, and clustering."
+      ],
+      [
+        "Why must forward and reverse DNS be correct before forming an Expressway cluster?",
+        "Peers depend on consistent name resolution for cluster identity and communication",
+        "DNS assigns traversal media ports",
+        "DNS encrypts cluster replication",
+        "DNS replaces peer certificates",
+        "Stable forward and reverse resolution prevents peer identity and communication failures."
+      ],
+      [
+        "Where should an administrator verify the ports currently in use on Expressway?",
+        "Maintenance > Tools > Port usage",
+        "Status > Alarms > License usage",
+        "Configuration > Domains",
+        "Applications > FindMe",
+        "The Port usage tool lists active inbound and outbound ports for firewall planning."
+      ],
+      [
+        "What does an Expressway backup primarily preserve?",
+        "System configuration for restoration to a compatible deployment",
+        "Packet captures for every historical call",
+        "Private keys stored on an external HSM",
+        "The complete ESXi virtual disk",
+        "Expressway backup captures configuration; administrators must still follow compatibility and certificate/key handling guidance."
+      ],
+      [
+        "After changing a network interface address, what dependent configuration should be reviewed?",
+        "DNS, NAT, firewall, zone, and certificate references to that address",
+        "Only the UI theme",
+        "Only local user passwords",
+        "Only the system banner",
+        "An address change can affect routing, name resolution, NAT, certificates, and peer or zone connectivity."
+      ]
+    ]
+  },
+  {
+    "n": 3,
+    "part": "Part I: Key Concepts",
+    "title": "Initial Configuration Settings on the Cisco Expressway",
+    "qs": [
+      [
+        "Which Expressway setting identifies SIP domains for which the system can accept registrations or route calls?",
+        "Domain configuration",
+        "NTP peer configuration",
+        "SNMP community configuration",
+        "Backup encryption configuration",
+        "Configured domains define local SIP namespaces used by registrations and routing logic."
+      ],
+      [
+        "What must be enabled when a call needs translation between H.323 and SIP?",
+        "Protocol interworking",
+        "Media encryption downgrade",
+        "Directory Connector",
+        "Cluster address mapping",
+        "Protocol interworking allows Expressway to bridge signaling between H.323 and SIP."
+      ],
+      [
+        "Which status view is most useful for confirming that an endpoint successfully registered?",
+        "Registration status",
+        "License release history",
+        "NTP statistics only",
+        "Certificate signing request history",
+        "The registration status pages show current registered aliases and endpoints."
+      ],
+      [
+        "What is the purpose of the H.323 gatekeeper configuration on Expressway?",
+        "To control H.323 registrations and call signaling",
+        "To provide DHCP addresses",
+        "To store meeting recordings",
+        "To synchronize Webex users",
+        "H.323 gatekeeper functions manage H.323 endpoint registration and routing."
+      ],
+      [
+        "Why configure a default SIP transport deliberately rather than leaving the design implicit?",
+        "Zones and peers must agree on transport and security expectations",
+        "It changes the media codec",
+        "It assigns endpoint phone numbers",
+        "It disables DNS lookups",
+        "Transport mismatches such as TCP versus TLS are a common cause of zone and call failures."
+      ],
+      [
+        "An endpoint appears registered but calls fail immediately. What should be checked next?",
+        "Search history and applicable transforms, rules, and zones",
+        "Only the VM disk size",
+        "Only the administrator account",
+        "Only the system serial number",
+        "Registration proves reachability to Expressway, not that the dial plan can route the called alias."
+      ]
+    ]
+  },
+  {
+    "n": 4,
+    "part": "Part I: Key Concepts",
+    "title": "Regular Expressions on the Cisco Expressway",
+    "qs": [
+      [
+        "In an Expressway regular expression, what does the caret (^) anchor?",
+        "The beginning of the string",
+        "The end of the string",
+        "Any single digit",
+        "A captured group",
+        "The caret anchors a match to the beginning of the input."
+      ],
+      [
+        "What does the dollar sign ($) anchor in a regular expression?",
+        "The end of the string",
+        "The beginning of the string",
+        "Zero or more characters",
+        "A literal dollar amount",
+        "The dollar sign anchors a match to the end of the input."
+      ],
+      [
+        "Which token matches a decimal digit in Expressway regex syntax?",
+        "\\d",
+        ".",
+        "\\w only",
+        "^",
+        "The \\d token matches a digit."
+      ],
+      [
+        "What is the purpose of parentheses in a transform pattern?",
+        "They create a capture group that can be reused in the replacement",
+        "They force TLS",
+        "They negate the complete pattern",
+        "They mark a DNS zone",
+        "Captured groups let a transform retain selected parts of the original alias."
+      ],
+      [
+        "Which replacement references the first captured group?",
+        "\\1",
+        "\\0 only",
+        "$",
+        "(?!)",
+        "The first parenthesized capture group is referenced as \\1 in the replacement."
+      ],
+      [
+        "Before enabling a new transform, which Expressway tool should be used with representative aliases?",
+        "Check Pattern",
+        "Packet capture only",
+        "Port usage",
+        "License usage",
+        "Check Pattern shows whether sample aliases match and what the replacement produces."
+      ]
+    ]
+  },
+  {
+    "n": 5,
+    "part": "Part I: Key Concepts",
+    "title": "Security Overview on the Cisco Expressway",
+    "qs": [
+      [
+        "Which certificate field should contain every DNS name clients use to reach an Expressway service?",
+        "Subject Alternative Name (SAN)",
+        "Serial number",
+        "Key usage counter",
+        "CRL distribution interval",
+        "Modern TLS hostname validation uses SAN entries for the service names clients connect to."
+      ],
+      [
+        "What should be installed so Expressway trusts a peer certificate issued by an enterprise CA?",
+        "The issuing CA chain in the trusted CA store",
+        "The peer's administrator password",
+        "A DNS TXT record",
+        "A media encryption key in the dial plan",
+        "Trust requires the relevant root and intermediate CA certificates."
+      ],
+      [
+        "What does Force encrypted media do for a SIP call?",
+        "Requires encrypted media and rejects negotiation that cannot satisfy it",
+        "Encrypts signaling but forces clear RTP",
+        "Disables certificate validation",
+        "Allows either encrypted or unencrypted media without preference",
+        "Force encrypted media prevents the call from proceeding with unencrypted media."
+      ],
+      [
+        "What is the purpose of a certificate signing request (CSR)?",
+        "To request a CA-signed identity certificate containing the required names",
+        "To export call history",
+        "To create a DNS zone",
+        "To reset Smart Licensing",
+        "A CSR contains the public key and identity attributes a CA uses to issue the certificate."
+      ],
+      [
+        "Why should private keys be protected during backup and certificate operations?",
+        "Possession of the private key can allow impersonation of the Expressway",
+        "Private keys control NTP accuracy",
+        "Private keys assign media ports",
+        "Private keys are required only for SNMP",
+        "TLS identity depends on exclusive control of the private key."
+      ],
+      [
+        "What is a security benefit of remote administrator authentication?",
+        "It can centralize identity and account policy while preserving auditability",
+        "It removes the need for TLS",
+        "It automatically opens firewall ports",
+        "It converts SIP to H.323",
+        "Central authentication can apply consistent identity policy, although local recovery access still requires careful control."
+      ]
+    ]
+  },
+  {
+    "n": 6,
+    "part": "Part II: Cisco Expressway Configurations",
+    "title": "Registration on Cisco Expressway",
+    "qs": [
+      [
+        "What does an Allow List registration policy do?",
+        "Permits registrations that match configured allow rules",
+        "Allows every registration except listed aliases",
+        "Disables authentication",
+        "Routes calls without registration",
+        "Allow-list policy restricts registration to identities that satisfy the configured rules."
+      ],
+      [
+        "What does a Deny List registration policy do?",
+        "Rejects registrations matching configured deny rules while other registrations may proceed",
+        "Rejects all registrations",
+        "Accepts only local administrators",
+        "Disables SIP",
+        "A deny list blocks matching registrations rather than defining the only permitted identities."
+      ],
+      [
+        "Which mechanism can verify an endpoint's registration credentials against Expressway's local database?",
+        "Device authentication",
+        "NTP authentication",
+        "Media encryption",
+        "DNSSEC validation",
+        "Device authentication checks presented credentials against configured authentication sources."
+      ],
+      [
+        "What is the purpose of subzone membership rules?",
+        "To place registrations into subzones based on attributes such as address or alias",
+        "To create CA certificates",
+        "To assign VM resources",
+        "To configure Webex licenses",
+        "Membership rules classify devices so bandwidth and policy can be applied by subzone."
+      ],
+      [
+        "A second H.323 device tries to register an alias already in use. Which setting determines the result?",
+        "Registration conflict policy",
+        "SIP media encryption mode",
+        "Cluster peer order",
+        "NTP stratum",
+        "The conflict policy controls how duplicate H.323 registrations are handled."
+      ],
+      [
+        "Why should registration restrictions be combined with authentication?",
+        "Restriction controls which identities are allowed while authentication verifies the claimant",
+        "Restriction encrypts RTP",
+        "Authentication replaces DNS",
+        "Both settings only affect bandwidth",
+        "Authorization and authentication address different parts of registration security."
+      ]
+    ]
+  },
+  {
+    "n": 7,
+    "part": "Part II: Cisco Expressway Configurations",
+    "title": "Cisco Expressway Call Processing Order",
+    "qs": [
+      [
+        "Which operation is applied before Expressway searches zones for a destination?",
+        "Pre-search transforms",
+        "Post-call billing",
+        "Cluster replication",
+        "NTP correction",
+        "Pre-search transforms normalize the alias before search rules are evaluated."
+      ],
+      [
+        "What does a search rule determine?",
+        "Which target zone is searched for aliases matching its pattern",
+        "Which CA signs the server certificate",
+        "Which VM host runs Expressway",
+        "Which user receives a Webex license",
+        "Search rules match aliases and direct searches to zones with configured priority and behavior."
+      ],
+      [
+        "What can administrative call policy (CPL) do?",
+        "Allow, reject, or modify call handling based on policy conditions",
+        "Allocate VM memory",
+        "Renew Smart Licensing automatically",
+        "Create DNS SRV records",
+        "CPL is evaluated as call policy and can permit, reject, or influence calls."
+      ],
+      [
+        "What was FindMe designed to provide?",
+        "User policy that can route a called identity to multiple configured devices or locations",
+        "Firewall traversal port allocation",
+        "Certificate enrollment",
+        "Cluster database repair",
+        "FindMe associates a user identity with rules for reaching that user on available devices."
+      ],
+      [
+        "Which tool predicts how Expressway would route a supplied alias without placing the call?",
+        "Locate",
+        "Port usage",
+        "Check Pattern only",
+        "Backup restore",
+        "Locate evaluates dial-plan routing for an alias and helps expose the selected rules and zones."
+      ],
+      [
+        "Which view should be examined after a failed call to see each search attempt and result?",
+        "Search history",
+        "Administrator login history only",
+        "License usage",
+        "VM console",
+        "Search history records the route attempts and helps identify pattern, priority, or zone failures."
+      ]
+    ]
+  },
+  {
+    "n": 8,
+    "part": "Part II: Cisco Expressway Configurations",
+    "title": "Bandwidth Management",
+    "qs": [
+      [
+        "What does a subzone bandwidth limit control?",
+        "Bandwidth available to calls involving that subzone",
+        "The size of certificate keys",
+        "The number of DNS queries",
+        "The VM disk allocation",
+        "Subzone limits constrain call bandwidth associated with devices in the subzone."
+      ],
+      [
+        "What does a link represent in Expressway bandwidth configuration?",
+        "A logical path between subzones or zones",
+        "A TLS certificate chain",
+        "A cluster database copy",
+        "A Webex user assignment",
+        "Links model the path calls take between areas of the dial plan."
+      ],
+      [
+        "What does a pipe limit?",
+        "Aggregate bandwidth for one or more links that share a constrained network path",
+        "The number of administrator accounts",
+        "The number of CA certificates",
+        "The SIP registration refresh interval",
+        "Pipes model shared WAN constraints and cap aggregate bandwidth across associated links."
+      ],
+      [
+        "A call exceeds the remaining bandwidth on a required pipe. What is the expected result?",
+        "The call is rejected or cannot be routed over that constrained path",
+        "Expressway silently increases the pipe",
+        "The call becomes unencrypted",
+        "The endpoint is unregistered",
+        "Bandwidth admission control prevents a new call from exceeding the configured limit."
+      ],
+      [
+        "Why model both links and pipes instead of setting only endpoint limits?",
+        "Multiple logical routes can share the same physical WAN bottleneck",
+        "Links generate certificates",
+        "Pipes perform DNS lookup",
+        "Endpoints cannot signal bandwidth",
+        "A pipe lets several links consume a common aggregate limit representing the real network."
+      ],
+      [
+        "What information is needed to troubleshoot an unexpected bandwidth rejection?",
+        "The call path, subzones, links, pipes, configured limits, and current usage",
+        "Only the called number",
+        "Only the system uptime",
+        "Only the license serial number",
+        "The decision depends on the complete modeled path and its live usage."
+      ]
+    ]
+  },
+  {
+    "n": 9,
+    "part": "Part II: Cisco Expressway Configurations",
+    "title": "Multisite Collaboration Solutions",
+    "qs": [
+      [
+        "What is a key benefit of a structured dial plan?",
+        "It enables scalable routing by encoding location or organizational meaning in aliases",
+        "It eliminates DNS",
+        "It disables transforms",
+        "It requires every endpoint to share one alias",
+        "Structured aliases allow summarized, hierarchical routing rather than an unmanageable list of individual destinations."
+      ],
+      [
+        "Why are search-rule priorities important?",
+        "They determine the order in which matching routes are attempted",
+        "They choose the TLS cipher",
+        "They allocate VM CPU",
+        "They set the NTP server",
+        "When several rules match, priority influences which route Expressway tries first."
+      ],
+      [
+        "What is the purpose of a neighbor zone?",
+        "To route calls to another call-control system or Expressway peer",
+        "To synchronize administrator passwords",
+        "To assign Smart Licenses",
+        "To host Webex meetings",
+        "Neighbor zones define signaling connectivity to adjacent systems in the collaboration network."
+      ],
+      [
+        "What does hop count help prevent in a multisite dial plan?",
+        "Calls looping indefinitely among neighbor systems",
+        "Certificate expiration",
+        "Media encryption",
+        "Directory synchronization",
+        "A decreasing hop count bounds recursive or looping searches."
+      ],
+      [
+        "In a hierarchical video network, what function does a directory Expressway provide?",
+        "Centralized route knowledge between lower-level systems",
+        "Endpoint media termination for every call",
+        "Active Directory synchronization",
+        "PSTN billing",
+        "A directory layer can aggregate routes and reduce full-mesh neighbor configuration."
+      ],
+      [
+        "A flat dial plan grows across dozens of sites. What is the most likely operational problem?",
+        "Search rules and individual routes become difficult to scale and troubleshoot",
+        "TLS becomes impossible",
+        "Endpoints stop supporting SIP",
+        "NTP cannot cross sites",
+        "Flat plans often accumulate overlapping rules and make route ownership unclear."
+      ]
+    ]
+  },
+  {
+    "n": 10,
+    "part": "Part II: Cisco Expressway Configurations",
+    "title": "Multisite and Business-to-Business (B2B) Collaboration Solutions",
+    "qs": [
+      [
+        "What problem does STUN primarily help an endpoint discover?",
+        "Its public-facing address and NAT behavior",
+        "The CA that issued its certificate",
+        "The nearest NTP server",
+        "Its Webex license",
+        "STUN lets a client learn how it appears through NAT."
+      ],
+      [
+        "What is TURN used for when direct media connectivity cannot be established?",
+        "Relaying media through a reachable server",
+        "Resolving SIP domains",
+        "Issuing certificates",
+        "Synchronizing directories",
+        "TURN supplies a relay candidate when endpoints cannot establish a direct path."
+      ],
+      [
+        "What does ICE do?",
+        "Gathers and tests candidate paths to select a working media route",
+        "Encrypts all signaling",
+        "Assigns endpoint extensions",
+        "Clusters Expressways",
+        "ICE coordinates host, server-reflexive, and relay candidates to find a viable connection."
+      ],
+      [
+        "What do SIP DNS SRV records advertise?",
+        "The host, port, priority, and weight for a SIP service",
+        "The media encryption key",
+        "The endpoint password",
+        "The cluster database version",
+        "SRV records publish how a domain's signaling service can be reached."
+      ],
+      [
+        "Why use a traversal zone between Expressway-C and Expressway-E?",
+        "It creates an authenticated signaling and media traversal relationship across the firewall",
+        "It replaces the firewall",
+        "It synchronizes Webex users",
+        "It provides voicemail",
+        "The traversal relationship carries controlled calls and media through the boundary."
+      ],
+      [
+        "What is a basic toll-fraud safeguard for B2B routing?",
+        "Restrict search rules and call policy so untrusted callers cannot reach chargeable routes",
+        "Allow every alias and rely on billing alerts",
+        "Disable TLS",
+        "Publish internal extensions in public DNS",
+        "Least-privilege routing prevents the edge from becoming an unauthorized PSTN transit path."
+      ]
+    ]
+  },
+  {
+    "n": 11,
+    "part": "Part II: Cisco Expressway Configurations",
+    "title": "Clustering Expressways",
+    "qs": [
+      [
+        "What is the maximum number of Expressway peers in a cluster?",
+        "Six",
+        "Two",
+        "Eight",
+        "Twelve",
+        "Cisco documents a maximum of six peers, including the primary."
+      ],
+      [
+        "Where should cluster-wide configuration normally be changed?",
+        "On the primary peer",
+        "On every peer simultaneously",
+        "Only through DNS",
+        "On the last peer added",
+        "Changes on non-primary peers can be overwritten and may disrupt replication."
+      ],
+      [
+        "What must match across peers before clustering?",
+        "Platform compatibility and software version",
+        "Administrator password text",
+        "Every interface IP address",
+        "Every serial number",
+        "Peers must satisfy supported platform and version requirements."
+      ],
+      [
+        "Can Expressway-C and Expressway-E nodes be mixed in one cluster?",
+        "No; a cluster contains peers of the same Expressway role",
+        "Yes, in alternating order",
+        "Yes, but only with two peers",
+        "Only if H.323 is disabled",
+        "C and E roles are clustered separately."
+      ],
+      [
+        "Why should all peers have reliable DNS and NTP before joining?",
+        "Cluster identity, communication, logs, and certificates depend on consistent names and time",
+        "They control codec selection",
+        "They assign licenses",
+        "They create search rules",
+        "Name and time consistency are cluster prerequisites."
+      ],
+      [
+        "What is the safe method for adding peers?",
+        "Add peers one at a time and wait for the cluster to stabilize",
+        "Add all peers simultaneously while changing configuration",
+        "Clone the primary VM while it is running",
+        "Disable replication until the end",
+        "Cisco recommends adding peers individually and avoiding cluster-wide changes while peers are unstable."
+      ]
+    ]
+  },
+  {
+    "n": 12,
+    "part": "Part II: Cisco Expressway Configurations",
+    "title": "Troubleshooting a Business-to-Business (B2B) Collaboration Solution",
+    "qs": [
+      [
+        "A B2B call fails before reaching a zone. Which view should be checked first for dial-plan decisions?",
+        "Search history",
+        "Smart Licensing registration",
+        "VM datastore usage",
+        "Directory Connector logs",
+        "Search history shows transforms, rules, zones, and failure responses for the call."
+      ],
+      [
+        "Which tool captures packet-level signaling for deeper analysis?",
+        "Diagnostic logging with packet capture",
+        "Check Pattern only",
+        "License usage",
+        "Backup export",
+        "A bounded diagnostic log and packet capture can show SIP, H.323, TLS, and network exchanges."
+      ],
+      [
+        "A TLS zone is down after a certificate renewal. What should be verified?",
+        "Certificate SANs, validity, trust chain, and peer name",
+        "Only NTP stratum",
+        "Only the called alias",
+        "Only the VM CPU count",
+        "TLS fails when identity names, validity, or trust do not match the connection."
+      ],
+      [
+        "External domains cannot be called, but IP dialing works. What is the most likely area to investigate?",
+        "DNS resolution and SRV records",
+        "Media encryption only",
+        "Subzone bandwidth only",
+        "Administrator roles",
+        "Domain routing depends on correct DNS lookups even when raw IP reachability succeeds."
+      ],
+      [
+        "A remote system returns SIP 404. What does that generally indicate?",
+        "The requested user or route was not found at the responding system",
+        "The certificate expired",
+        "Media bandwidth was exceeded",
+        "The VM ran out of disk",
+        "A 404 response indicates the destination was not found in the responding context."
+      ],
+      [
+        "Why should diagnostic logging be time-bounded and reproduced once?",
+        "It limits sensitive data and log volume while capturing the failing transaction",
+        "It changes the search-rule priority",
+        "It renews certificates",
+        "It increases call bandwidth",
+        "Focused reproduction makes analysis clearer and reduces unnecessary capture of user traffic."
+      ]
+    ]
+  },
+  {
+    "n": 13,
+    "part": "Part III: Mobile and Remote Access",
+    "title": "Introduction to Mobile and Remote Access (MRA)",
+    "qs": [
+      [
+        "What does MRA allow supported users to do?",
+        "Register and use collaboration services from outside the enterprise without a VPN",
+        "Replace Unified CM with Expressway",
+        "Join the internal LAN by DHCP",
+        "Bypass authentication",
+        "MRA securely proxies supported collaboration services through Expressway-C and Expressway-E."
+      ],
+      [
+        "Which system remains the call-control authority for an MRA-registered Jabber or device deployment?",
+        "Cisco Unified Communications Manager",
+        "Expressway-E alone",
+        "Public DNS",
+        "Directory Connector",
+        "Expressway provides traversal and proxy services; Unified CM remains call control."
+      ],
+      [
+        "Which Expressway role discovers internal UC services?",
+        "Expressway-C",
+        "Expressway-E only",
+        "A public TURN server",
+        "The endpoint itself without DNS",
+        "Expressway-C integrates with internal Unified CM, IM and Presence, and related services."
+      ],
+      [
+        "Which Expressway role is reachable from remote clients on the internet?",
+        "Expressway-E",
+        "Expressway-C directly",
+        "Unified CM publisher",
+        "Directory Connector",
+        "Remote clients discover and connect to the edge-facing Expressway-E."
+      ],
+      [
+        "Why are certificates especially important for MRA?",
+        "They authenticate service names and protect TLS connections across trust boundaries",
+        "They assign phone numbers",
+        "They replace DNS",
+        "They select codecs",
+        "Remote clients and Expressway peers must validate service identities before exchanging credentials and signaling."
+      ],
+      [
+        "What is a key design consideration before enabling MRA?",
+        "Supported versions, capacity, firewall/DNS, certificates, and security policy",
+        "Only the UI color",
+        "Only H.323 gatekeeper settings",
+        "Only voicemail storage",
+        "MRA success depends on an end-to-end supported and secured design."
+      ]
+    ]
+  },
+  {
+    "n": 14,
+    "part": "Part III: Mobile and Remote Access",
+    "title": "Configure an MRA Solution",
+    "qs": [
+      [
+        "Which public DNS SRV record lets remote clients discover the MRA edge?",
+        "_collab-edge._tls",
+        "_cisco-uds._tcp",
+        "_sip._udp only",
+        "_ntp._udp",
+        "Remote clients query _collab-edge._tls in public DNS to find Expressway-E."
+      ],
+      [
+        "Which internal DNS SRV record helps clients discover Unified CM services?",
+        "_cisco-uds._tcp",
+        "_collab-edge._tls",
+        "_turn._udp",
+        "_h323._tcp",
+        "Internal service discovery uses _cisco-uds._tcp."
+      ],
+      [
+        "What Unified Communications mode must be enabled on the Expressway pair?",
+        "Mobile and Remote Access",
+        "Jabber Guest only",
+        "H.323 gatekeeper only",
+        "Directory Connector",
+        "Both Expressway-C and Expressway-E are configured for Mobile and Remote Access mode."
+      ],
+      [
+        "Why must the Expressway-E certificate include MRA service names in SANs?",
+        "Remote clients validate the hostname they discovered against the certificate",
+        "SANs allocate media ports",
+        "SANs define bandwidth",
+        "SANs assign user licenses",
+        "The certificate must authenticate the DNS names clients use."
+      ],
+      [
+        "What is the purpose of the HTTP allow list in MRA?",
+        "To control which internal web resources may be proxied to remote clients",
+        "To list allowed RTP codecs",
+        "To create DNS records",
+        "To select cluster peers",
+        "The allow list limits proxied HTTP access to approved internal services."
+      ],
+      [
+        "What connects Expressway-C and Expressway-E for MRA signaling?",
+        "A Unified Communications traversal zone",
+        "An H.323-only neighbor zone",
+        "A Directory Connector",
+        "A Webex route group",
+        "The UC traversal zone forms the secure relationship used by MRA services."
+      ]
+    ]
+  },
+  {
+    "n": 15,
+    "part": "Part III: Mobile and Remote Access",
+    "title": "Troubleshoot an MRA Solution",
+    "qs": [
+      [
+        "A remote client cannot discover any edge service. What should be checked first?",
+        "The public _collab-edge._tls SRV lookup",
+        "Unified CM device pool",
+        "Subzone bandwidth",
+        "Smart Licensing consumption",
+        "Discovery must succeed before the client can connect to Expressway-E."
+      ],
+      [
+        "A client reaches Expressway-E but rejects TLS. What should be checked?",
+        "Certificate SAN, validity, chain, and the discovered hostname",
+        "Only the user's extension",
+        "Only the RTP port range",
+        "Only the NTP server on Unified CM",
+        "TLS validation depends on identity, trust, and time validity."
+      ],
+      [
+        "External sign-in reaches the edge but fails to locate the user's home cluster. What should be investigated?",
+        "Expressway-C UC discovery and Unified CM/IM&P configuration",
+        "The public website certificate only",
+        "The offline ZIP",
+        "The endpoint wallpaper",
+        "Home-cluster and UC service discovery occur through the internal MRA integration."
+      ],
+      [
+        "Why should Expressway-C and Expressway-E diagnostic logs be collected for the same reproduction window?",
+        "They show both sides of the proxied transaction with correlating timestamps",
+        "They automatically fix the issue",
+        "They renew all certificates",
+        "They change DNS propagation",
+        "Correlated logs make it possible to follow discovery, authentication, and signaling end to end."
+      ],
+      [
+        "Multiple users behind one NAT address trigger intrusion protection. What is the documented mitigation?",
+        "Configure a justified exemption for the shared public IP while preserving protection elsewhere",
+        "Disable authentication",
+        "Publish Expressway-C publicly",
+        "Remove certificates",
+        "Cisco notes that a shared NAT address can trigger thresholds and supports carefully scoped exemptions."
+      ],
+      [
+        "Internal sign-in works but external sign-in fails. What boundary-specific areas should be compared?",
+        "Public DNS, firewall/NAT, Expressway-E certificate, and traversal-zone status",
+        "Only the user's voicemail PIN",
+        "Only Unified CM regions",
+        "Only local DHCP",
+        "The contrast isolates the failure to external discovery, edge security, or traversal connectivity."
+      ]
+    ]
+  },
+  {
+    "n": 16,
+    "part": "Part IV: Cisco Webex Technologies",
+    "title": "Introduction to Cisco Cloud Collaboration",
+    "qs": [
+      [
+        "What is Control Hub?",
+        "The cloud administration portal for Webex organizations and services",
+        "An Expressway packet-capture utility",
+        "A local H.323 gatekeeper",
+        "A DNS server",
+        "Control Hub centralizes organization, user, device, service, and analytics administration."
+      ],
+      [
+        "What characterizes a Webex hybrid service?",
+        "It connects on-premises resources with Webex cloud capabilities",
+        "It requires every user to use a VPN",
+        "It removes cloud identity",
+        "It supports only H.323",
+        "Hybrid services bridge selected on-premises systems and cloud services."
+      ],
+      [
+        "What is the management connector's historical role on an Expressway connector host?",
+        "It registers and manages supported hybrid connectors with the Webex cloud",
+        "It routes all PSTN calls",
+        "It provides DHCP",
+        "It signs endpoint certificates",
+        "The management connector coordinated connector lifecycle and cloud registration on supported Expressway-based hybrid deployments."
+      ],
+      [
+        "Which platform provides cloud meetings, messaging, calling, and device services?",
+        "Webex",
+        "Expressway local database",
+        "NTP",
+        "Cisco IOS DHCP",
+        "Webex is Cisco's cloud collaboration suite spanning these workloads."
+      ],
+      [
+        "Why must legacy hybrid-service chapters be read with current documentation?",
+        "Some connector architectures and services have changed or been retired since 2021",
+        "The book does not discuss SIP",
+        "Current services no longer use identity",
+        "All 2021 ports are permanently fixed",
+        "Cloud services evolve quickly, so current lifecycle and deployment guidance must override outdated procedures."
+      ],
+      [
+        "Which identity boundary is managed at the Webex organization level?",
+        "Users, domains, administrators, licenses, and service entitlements",
+        "Expressway subzone links only",
+        "H.323 hop counts only",
+        "VM datastore allocation",
+        "The Webex organization is the administrative boundary for cloud identities and services."
+      ]
+    ]
+  },
+  {
+    "n": 17,
+    "part": "Part IV: Cisco Webex Technologies",
+    "title": "Configure Webex Hybrid Directory Service",
+    "qs": [
+      [
+        "What is the authoritative source for users in a Directory Connector deployment?",
+        "On-premises Active Directory",
+        "Expressway search history",
+        "Public DNS",
+        "The endpoint local phonebook",
+        "Directory Connector replicates selected Active Directory objects to Webex, making AD the source of truth."
+      ],
+      [
+        "Where is Directory Connector downloaded and directory synchronization enabled?",
+        "Control Hub",
+        "Expressway Locate tool",
+        "Unified CM RTMT",
+        "The public DNS console",
+        "Administrators start directory synchronization and obtain the connector from Control Hub."
+      ],
+      [
+        "What should be run before committing a large synchronization change?",
+        "A dry run and review of its report",
+        "A full deletion",
+        "A packet capture on every endpoint",
+        "A Smart License reservation",
+        "A dry run previews additions, modifications, and deletions before they affect cloud identity."
+      ],
+      [
+        "What is the difference between full and incremental synchronization?",
+        "Full evaluates the entire selected directory; incremental processes changes since the prior sync",
+        "Full uses TLS and incremental does not",
+        "Incremental deletes all users",
+        "There is no difference",
+        "Incremental sync reduces processing by sending changed objects while full sync evaluates the complete scope."
+      ],
+      [
+        "How is high availability provided for Directory Connector?",
+        "Install multiple connectors so a backup can take over",
+        "Create an Expressway traversal pair",
+        "Use two DNS A records only",
+        "Duplicate every Webex user manually",
+        "The connector supports multiple instances for resilience."
+      ],
+      [
+        "When should automatic license assignment be configured?",
+        "Before or alongside synchronization so new users receive intended services consistently",
+        "Only after deleting the directory",
+        "On Expressway-E",
+        "In public DNS",
+        "An auto-assign template reduces manual entitlement work for newly synchronized users."
+      ]
+    ]
+  },
+  {
+    "n": 18,
+    "part": "Part IV: Cisco Webex Technologies",
+    "title": "Configure Webex Hybrid Calendar Service",
+    "qs": [
+      [
+        "What user experience does One Button to Push (OBTP) provide?",
+        "A join button on a supported device shortly before a scheduled meeting",
+        "Automatic password reset",
+        "A new SIP domain",
+        "Directory synchronization",
+        "Hybrid Calendar supplies meeting details so supported devices can present a timely join action."
+      ],
+      [
+        "Which cloud mail platforms can use cloud-based Hybrid Calendar?",
+        "Microsoft 365 and Google Calendar",
+        "Only an on-premises POP3 server",
+        "Only Cisco Unity Connection",
+        "Only local text files",
+        "Current Hybrid Calendar supports cloud mail services including Microsoft 365 and Google Calendar."
+      ],
+      [
+        "What data must a calendar service be able to read to create join information?",
+        "Relevant meeting and calendar event details",
+        "Expressway Smart License tokens",
+        "H.323 gatekeeper passwords",
+        "VM snapshots",
+        "The service processes meeting invitations and event data to determine conferencing details."
+      ],
+      [
+        "What is the role of a calendar connector in a supported on-premises Exchange design?",
+        "It mediates between the on-premises calendar environment and Webex",
+        "It replaces Exchange",
+        "It routes PSTN calls",
+        "It clusters video endpoints",
+        "The connector securely integrates the local calendar system with the cloud service."
+      ],
+      [
+        "A room receives invitations but never shows OBTP. What should be checked?",
+        "Calendar service assignment, room mapping, invitation format, and connector/cloud status",
+        "Only the user's phone PIN",
+        "Only the Expressway H.323 mode",
+        "Only the VM disk",
+        "OBTP depends on the room identity, supported invitation details, and a healthy calendar integration."
+      ],
+      [
+        "Why should current Hybrid Calendar deployment guidance be used instead of assuming the 2021 connector model?",
+        "Cisco now supports cloud-based options and has changed some on-premises requirements",
+        "Calendar no longer uses identities",
+        "OBTP was removed",
+        "Exchange cannot create meetings",
+        "The service architecture has evolved since the book was published."
+      ]
+    ]
+  },
+  {
+    "n": 19,
+    "part": "Part IV: Cisco Webex Technologies",
+    "title": "Configure Webex Hybrid Message Service",
+    "qs": [
+      [
+        "What was Hybrid Message Service designed to connect?",
+        "On-premises IM and Presence messaging with Webex cloud messaging",
+        "Expressway licensing with Smart Accounts",
+        "H.323 endpoints with PSTN trunks",
+        "NTP servers with DNS",
+        "The service bridged messaging between supported on-premises IM&P environments and Webex."
+      ],
+      [
+        "Why is lifecycle verification essential for Hybrid Message Service?",
+        "The service architecture and availability have changed since the book was published",
+        "Messaging never uses certificates",
+        "The book predates SIP",
+        "Current Webex has no messaging",
+        "Students must distinguish historical exam material from currently deployable services."
+      ],
+      [
+        "What secured the connector's communication to the Webex cloud?",
+        "Trusted TLS certificates and authenticated cloud registration",
+        "An unauthenticated UDP tunnel",
+        "A local hosts file only",
+        "H.323 hop count",
+        "Connector-to-cloud communications relied on authenticated, encrypted connections."
+      ],
+      [
+        "Which on-premises application supplied presence and messaging integration?",
+        "Cisco IM and Presence Service",
+        "Cisco Unity Connection only",
+        "Cisco DNA Center",
+        "Cisco ISE guest portal",
+        "Hybrid Message integrated supported IM and Presence deployments with Webex messaging."
+      ],
+      [
+        "What should be checked before attempting any legacy hybrid connector deployment?",
+        "Current Cisco service availability, supported versions, and migration guidance",
+        "Only the historical screenshots",
+        "Only the old default password",
+        "Whether H.323 is enabled",
+        "A currently supported design must be confirmed before following legacy procedures."
+      ],
+      [
+        "How should a practice question treat a retired cloud connector procedure?",
+        "Identify it as historical and test the concept or migration awareness, not recommend it as current deployment guidance",
+        "Present it as the required current method",
+        "Remove every mention of messaging",
+        "Mark every answer unverified",
+        "This preserves study value without teaching obsolete operational steps."
+      ]
+    ]
+  },
+  {
+    "n": 20,
+    "part": "Part IV: Cisco Webex Technologies",
+    "title": "Webex Edge Solutions",
+    "qs": [
+      [
+        "What does Webex Edge for Devices preserve on premises?",
+        "Device registration, management, calling, and media services",
+        "Only user passwords",
+        "Only meeting recordings",
+        "Only DNS",
+        "Edge for Devices links on-premises registered devices to selected cloud features without moving core registration and media to the cloud."
+      ],
+      [
+        "What is the goal of Webex Edge Audio?",
+        "Route Webex meeting audio through enterprise calling connectivity where supported",
+        "Replace all video media with email",
+        "Synchronize Active Directory",
+        "Cluster Expressways",
+        "Edge Audio integrates enterprise calling paths with Webex meeting audio."
+      ],
+      [
+        "What does Webex Edge Connect provide?",
+        "A private connection option between an enterprise network and Webex",
+        "A local certificate authority",
+        "An H.323 gatekeeper",
+        "A voicemail server",
+        "Edge Connect offers private network connectivity to Webex through supported providers."
+      ],
+      [
+        "What is Webex Video Mesh designed to do?",
+        "Keep eligible meeting media on premises when practical while retaining cloud meeting control",
+        "Move all call control to Expressway",
+        "Replace DNS",
+        "Provide user directory synchronization",
+        "Video Mesh processes supported media locally and cascades to cloud resources when needed."
+      ],
+      [
+        "Which TCP port is documented for Video Mesh intracluster communication?",
+        "8443",
+        "25",
+        "69",
+        "3389",
+        "The Video Mesh deployment guide lists TCP 8443 for intracluster communication."
+      ],
+      [
+        "Why may Video Mesh calls overflow to the cloud?",
+        "Local capacity, reachability, policy, or meeting-participant conditions may require cloud media",
+        "The node cannot use DNS",
+        "Every meeting is forced to cloud",
+        "A valid certificate disables local media",
+        "Video Mesh selects local resources when eligible and available, otherwise uses cloud media."
+      ]
+    ]
+  },
+  {
+    "n": 21,
+    "part": "Part IV: Cisco Webex Technologies",
+    "title": "Cisco Jabber for Cloud and Hybrid Deployments with Cisco Webex Messenger",
+    "qs": [
+      [
+        "What must be confirmed before deploying a legacy Jabber/Webex Messenger architecture?",
+        "Current product lifecycle, supported services, and migration path",
+        "Only the user's wallpaper",
+        "Only the H.323 hop count",
+        "Only the Expressway VM size",
+        "Webex Messenger-era designs have changed, so current support status must be checked first."
+      ],
+      [
+        "Which on-premises platform historically provided Jabber call control in a hybrid deployment?",
+        "Cisco Unified Communications Manager",
+        "Public DNS",
+        "Control Hub only",
+        "Directory Connector",
+        "Unified CM supplied enterprise call control while cloud services supplied selected messaging capabilities."
+      ],
+      [
+        "What client configuration service helps Jabber discover its Unified CM services internally?",
+        "_cisco-uds DNS service discovery",
+        "_collab-edge only",
+        "A TURN allocation",
+        "An NTP TXT record",
+        "Jabber uses UDS service discovery to locate internal Unified CM services."
+      ],
+      [
+        "What should be used for remote Jabber access to on-premises Unified CM without VPN?",
+        "Mobile and Remote Access through Expressway",
+        "A public Unified CM publisher",
+        "Directory Connector",
+        "Webex Edge Connect only",
+        "MRA securely exposes supported UC services through the Expressway pair."
+      ],
+      [
+        "Why must user identity be consistent across call control and cloud services?",
+        "Service association and sign-in depend on matching, routable user identities",
+        "It controls VM CPU",
+        "It assigns RTP ports",
+        "It sets NTP time",
+        "Mismatched identities commonly break provisioning, service discovery, and user experience."
+      ],
+      [
+        "How should obsolete Webex Messenger details be presented to students?",
+        "As historical context with current replacement or migration guidance",
+        "As the preferred greenfield design",
+        "Without any version warning",
+        "As a DNS troubleshooting procedure",
+        "Version labeling prevents learners from applying retired designs to current deployments."
+      ]
+    ]
+  },
+  {
+    "n": 22,
+    "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+    "title": "Suite and Devices Configuration",
+    "qs": [
+      [
+        "Which federation standard does Webex Control Hub use for enterprise SSO?",
+        "SAML 2.0",
+        "H.323",
+        "SNMPv2",
+        "TFTP",
+        "Webex Control Hub integrates with enterprise identity providers using SAML 2.0."
+      ],
+      [
+        "What should an administrator do before committing Directory Connector changes?",
+        "Run and review a dry-run synchronization",
+        "Delete all cloud users",
+        "Disable TLS",
+        "Remove the verified domain",
+        "A dry run previews proposed adds, changes, and deletions."
+      ],
+      [
+        "Which two Local Gateway trunk models are named in the CLHCT v2.0 outline?",
+        "Certificate-based and registration-based",
+        "Analog and ISDN",
+        "SCCP and MGCP",
+        "Static and dynamic NAT",
+        "The current outline explicitly tests certificate-based and registration-based Local Gateway models."
+      ],
+      [
+        "What happens to supported endpoints when Webex cloud connectivity is lost and Site Survivability is configured?",
+        "They register to the local Survivability Gateway for supported fallback calling",
+        "They permanently unregister",
+        "They connect to Directory Connector",
+        "They become H.323-only",
+        "Endpoints transition from active cloud registration to local survivability mode during the outage."
+      ],
+      [
+        "Which Control Hub feature provides a shared workspace phone experience for different users at different times?",
+        "Hot desking",
+        "Video Mesh",
+        "Directory Connector",
+        "Expressway FindMe",
+        "Hot desking lets users temporarily sign in to a shared device with their calling identity."
+      ]
+    ]
+  },
+  {
+    "n": 23,
+    "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+    "title": "Cloud Management",
+    "qs": [
+      [
+        "What is the first safe step before a large directory synchronization change?",
+        "Run a dry run and inspect the change report",
+        "Force a full sync without review",
+        "Remove the verified domain",
+        "Disable SSO",
+        "The dry run exposes unexpected additions, changes, or deletions before they reach the cloud."
+      ],
+      [
+        "What protocol is commonly used by identity providers to provision users into Webex without Directory Connector?",
+        "SCIM",
+        "RTP",
+        "H.323",
+        "NTP",
+        "SCIM provides standardized cloud identity provisioning."
+      ],
+      [
+        "What does RBAC control in Control Hub?",
+        "Which administrative actions a role is authorized to perform",
+        "Which codec a call uses",
+        "Which DNS server answers",
+        "Which RTP port is selected",
+        "Role-based access control limits administration according to assigned responsibilities."
+      ],
+      [
+        "Which symptom most directly suggests insufficient network bandwidth for Webex media?",
+        "Sustained loss, jitter, and degraded audio/video during load",
+        "An expired administrator password",
+        "A missing user license only",
+        "A duplicate directory object",
+        "Media quality degrades when the path cannot carry the offered traffic with acceptable loss and delay."
+      ],
+      [
+        "Why should QoS markings be checked end to end?",
+        "A marking applied by an endpoint is ineffective if intermediate devices remark or ignore it",
+        "QoS creates user accounts",
+        "QoS replaces bandwidth",
+        "QoS signs certificates",
+        "Classification, trust, queuing, and WAN policy must be consistent across the full path."
+      ]
+    ]
+  },
+  {
+    "n": 24,
+    "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+    "title": "Suite and Devices Management",
+    "qs": [
+      [
+        "What is the purpose of a Webex Calling route group?",
+        "To distribute calls across trunks and provide redundancy or scale",
+        "To synchronize users",
+        "To group meeting recordings",
+        "To issue device certificates",
+        "A route group contains trunks with priorities used for load distribution and failover."
+      ],
+      [
+        "What does a Webex Calling dial plan do?",
+        "Routes matching enterprise patterns to a selected trunk or route group",
+        "Assigns Webex licenses",
+        "Creates DNS SRV records",
+        "Controls meeting retention",
+        "Dial plans associate patterns with on-premises routing choices."
+      ],
+      [
+        "What do outbound translation patterns change?",
+        "Dialed digits before routing",
+        "The user's SSO password",
+        "The media codec",
+        "The device certificate",
+        "Translation patterns normalize or substitute digits for outbound and redirected calls."
+      ],
+      [
+        "A cloud-registered endpoint cannot register. What should be checked first?",
+        "Service entitlement, activation/identity, DNS, time, and network reachability to Webex",
+        "Expressway H.323 hop count only",
+        "PSTN billing",
+        "Directory Connector CPU only",
+        "Registration requires valid identity and entitlement plus network, DNS, and time prerequisites."
+      ],
+      [
+        "What is the best first evidence for troubleshooting a failed Webex Calling route?",
+        "The called number, location, applied translation, dial plan, route group/trunk status, and call diagnostics",
+        "Only the user's display name",
+        "Only the device wallpaper",
+        "Only the meeting site URL",
+        "Call routing is determined by the normalized number, location policy, and health of the selected route."
+      ]
+    ]
+  },
+  {
+    "n": 25,
+    "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+    "title": "Suite and Device Administration",
+    "qs": [
+      [
+        "Where are organization domains, users, services, and administrative roles managed?",
+        "Control Hub",
+        "Expressway search history",
+        "Unified CM CDR only",
+        "Public DNS alone",
+        "Control Hub is the central Webex administration portal."
+      ],
+      [
+        "Why verify a domain in Control Hub?",
+        "To prove organizational ownership before enabling domain-scoped identity controls",
+        "To allocate RTP ports",
+        "To form an Expressway cluster",
+        "To create H.323 zones",
+        "Domain verification establishes that the organization controls the claimed namespace."
+      ],
+      [
+        "What is a site-level administration concern for Webex Meetings?",
+        "Applying the correct features and common settings to the intended meeting site",
+        "Changing Expressway subzone links",
+        "Assigning H.323 hop count",
+        "Configuring VM snapshots",
+        "Organizations may manage multiple meeting sites with distinct feature and policy settings."
+      ],
+      [
+        "What is a responsible use of AI features in cloud collaboration administration?",
+        "Enable features with appropriate privacy, retention, compliance, and user-policy review",
+        "Assume AI output is always correct",
+        "Disable audit logging",
+        "Share all meeting content publicly",
+        "AI features must operate within the organization's data-governance and compliance requirements."
+      ],
+      [
+        "What is the role of Control Hub migration tools?",
+        "Assess and move supported on-premises users, devices, or services toward cloud configurations",
+        "Replace public DNS",
+        "Issue all enterprise certificates",
+        "Provide NTP",
+        "Migration tools help inventory, plan, and execute supported transitions to Webex cloud services."
+      ]
+    ]
+  },
+  {
+    "n": 26,
+    "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+    "title": "Hybrid and Migration to the Cloud",
+    "qs": [
+      [
+        "What does Cloud Connected UC provide during a cloud migration journey?",
+        "Cloud-based management, analytics, and operational services for supported on-premises UC",
+        "A replacement for every Unified CM node",
+        "A public PSTN carrier",
+        "An H.323-only edge",
+        "Cloud Connected UC links supported on-premises deployments to Control Hub capabilities."
+      ],
+      [
+        "Why is discovery and assessment required before migration?",
+        "It identifies versions, dependencies, identities, devices, dial plans, and unsupported features",
+        "It eliminates the need for testing",
+        "It automatically rewrites every dial plan",
+        "It guarantees zero downtime",
+        "Migration planning must account for the real inventory and feature dependencies."
+      ],
+      [
+        "What is a key identity prerequisite for staged migration?",
+        "Consistent verified domains and user identities across on-premises and cloud systems",
+        "Identical device MAC addresses",
+        "One shared administrator password",
+        "Disabling SSO",
+        "Stable identity mapping prevents duplicate users and broken service assignment."
+      ],
+      [
+        "Why preserve dial-plan normalization during migration?",
+        "Users and integrations must continue reaching destinations consistently across hybrid call paths",
+        "It controls meeting recording retention",
+        "It assigns licenses",
+        "It replaces QoS",
+        "Hybrid periods often route calls across both environments, making consistent number normalization essential."
+      ],
+      [
+        "What should a rollback plan define?",
+        "Trigger conditions, retained configuration/data, routing reversal, and validation steps",
+        "Only a project end date",
+        "Only the new site name",
+        "Only a DNS TTL",
+        "A usable rollback plan explains how to restore service and prove it works."
+      ]
+    ]
+  },
+  {
+    "n": 27,
+    "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+    "title": "Security",
+    "qs": [
+      [
+        "What is the purpose of the Webex identity service in the cloud security architecture?",
+        "Authenticate and represent users and service identities",
+        "Relay all meeting media",
+        "Store every recording",
+        "Provide PSTN trunks",
+        "The identity service supports authentication and identity used across Webex workloads."
+      ],
+      [
+        "What is the purpose of the Webex Key Management Service (KMS)?",
+        "Manage encryption keys used to protect Webex content",
+        "Resolve DNS names",
+        "Assign calling numbers",
+        "Form Expressway clusters",
+        "KMS is the key-management component of Webex content protection."
+      ],
+      [
+        "What does Hybrid Data Security move into the customer environment?",
+        "Key-management and related security components for supported encrypted content",
+        "All Webex cloud media",
+        "Every Control Hub function",
+        "Public DNS",
+        "Hybrid Data Security lets eligible customers operate key-management components on premises while using Webex cloud services."
+      ],
+      [
+        "Why are retention and eDiscovery policies part of collaboration security?",
+        "They govern how content is preserved, found, and produced for compliance obligations",
+        "They select codecs",
+        "They assign RTP ports",
+        "They configure NTP",
+        "Security includes governance and compliance across the content lifecycle."
+      ],
+      [
+        "What administrative principle reduces the effect of a compromised account?",
+        "Least privilege with role-based access and strong authentication",
+        "Give every administrator full privileges",
+        "Disable audit logs",
+        "Reuse a shared password",
+        "Limiting privileges and strengthening authentication reduce available actions and improve accountability."
+      ]
+    ]
+  },
+  {
+    "n": 28,
+    "part": "Part V: CLHCT v2.0 — Current Exam Domains",
+    "title": "APIs and Programmability",
+    "qs": [
+      [
+        "Where should a developer begin when exploring supported Webex APIs and integrations?",
+        "Webex Developer Portal and App Hub",
+        "Expressway Locate tool",
+        "Unified CM RTMT only",
+        "Public DNS",
+        "The Developer Portal documents APIs and authentication, while App Hub exposes available integrations."
+      ],
+      [
+        "What does an OAuth access token authorize?",
+        "API actions within the scopes granted to the application or integration",
+        "Unlimited administrator access",
+        "H.323 gatekeeper registration",
+        "Media encryption without identity",
+        "OAuth tokens carry delegated scopes that constrain API access."
+      ],
+      [
+        "Which API family is appropriate for creating and posting to Webex spaces?",
+        "Webex Messaging APIs",
+        "NTP API",
+        "Expressway backup API only",
+        "H.323 RAS",
+        "Messaging APIs manage spaces, memberships, and messages."
+      ],
+      [
+        "What do Webex webhooks provide?",
+        "Event notifications to an application when subscribed resources change",
+        "A permanent administrator password",
+        "A media relay",
+        "A DNS zone",
+        "Webhooks let applications react to events instead of continuously polling."
+      ],
+      [
+        "What are RoomOS macros used for?",
+        "Automating and customizing supported behavior on Cisco collaboration devices",
+        "Creating Expressway clusters",
+        "Synchronizing Active Directory",
+        "Issuing TLS certificates",
+        "Macros use supported device APIs and events to customize room experiences and automation."
+      ]
+    ]
+  }
+];
+
+// Source catalog: id -> [title, site, type, url]
+// type: "cisco" = Cisco/Webex official documentation; "prep" = exam-prep / study site; "ref" = community or general reference
+const SRC = {
+  "oreilly_toc": [
+    "CLCEI Official Cert Guide — chapter and foundation-topic contents",
+    "O'Reilly / Cisco Press",
+    "cisco",
+    "https://www.oreilly.com/library/view/ccnp-collaboration-cloud/9780136733867/toc.xhtml"
+  ],
+  "clhct_outline": [
+    "Implementing Cisco Collaboration Hybrid and Cloud Technologies v2.0 Exam Topics",
+    "Cisco",
+    "cisco",
+    "https://learningcontent.cisco.com/documents/marketing/exam-topics/300-820-CLHCT-v2.0.pdf"
+  ],
+  "exp_admin": [
+    "Cisco Expressway Administrator Guide (X15.4)",
+    "Cisco",
+    "cisco",
+    "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/expressway/admin_guide/X15-4/exwy_b_cisco-expressway-administrator-guide-x154.html"
+  ],
+  "exp_install": [
+    "Cisco Expressway Install and Upgrade Guides",
+    "Cisco",
+    "cisco",
+    "https://www.cisco.com/c/en/us/support/unified-communications/expressway-series/products-installation-guides-list.html"
+  ],
+  "exp_cluster": [
+    "Cisco Expressway Cluster Creation and Maintenance Deployment Guide (X15.4)",
+    "Cisco",
+    "cisco",
+    "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/expressway/config_guide/X15-4/cluster_creation_maint/exwy_b_cisco-expressway-cluster-creation-and-maintenance-deployment-guide-x154.pdf"
+  ],
+  "exp_ports": [
+    "Cisco Expressway IP Port Usage Configuration Guide",
+    "Cisco",
+    "cisco",
+    "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/expressway/config_guide/X15-0/ip-port/exwy_b_cisco-expressway-ip-port-usage-configuration-guide-x15.pdf"
+  ],
+  "mra": [
+    "Mobile and Remote Access Through Cisco Expressway Deployment Guide (X15.0)",
+    "Cisco",
+    "cisco",
+    "https://www.cisco.com/c/en/us/td/docs/voice_ip_comm/expressway/config_guide/X15-0/mra/exwy_b_mra-deployment-guide-x150.pdf"
+  ],
+  "directory": [
+    "Deployment Guide for Directory Connector",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/article/zqvufbb"
+  ],
+  "calendar": [
+    "Deployment guide for Hybrid Calendar",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-us/article/n6cwujdb"
+  ],
+  "edge_devices": [
+    "Webex Edge for Devices",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/article/cy2l2z"
+  ],
+  "video_mesh": [
+    "Deployment Guide for Video Mesh",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/article/2r5gv7"
+  ],
+  "sso": [
+    "Single Sign-On Integration in Control Hub",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-us/article/ixe4v9"
+  ],
+  "calling": [
+    "Configure trunks, route groups, and dial plans for Webex Calling",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-us/article/n0xb944"
+  ],
+  "translation": [
+    "Translation patterns for outbound calls",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-us/article/nib9o6h"
+  ],
+  "survivability": [
+    "Site survivability for Webex Calling",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-us/article/d68vi1"
+  ],
+  "local_gateway": [
+    "Webex Calling Configuration Workflow",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-US/article/32gfts"
+  ],
+  "control_hub": [
+    "Control Hub administration",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-us/article/n4v7y7/Getting-started-with-Control-Hub"
+  ],
+  "hybrid_security": [
+    "Hybrid Data Security deployment guide",
+    "Webex Help",
+    "cisco",
+    "https://help.webex.com/en-us/article/n8ox4j/Deployment-Guide-for-Hybrid-Data-Security"
+  ],
+  "developer": [
+    "Webex Developer Documentation",
+    "Webex for Developers",
+    "cisco",
+    "https://developer.webex.com/docs"
+  ]
+};
+const VER = {
+  "1": [
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "2": [
+    [
+      [
+        "exp_install",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_install",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_install",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_install",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_install",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_install",
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "3": [
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "4": [
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "5": [
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "6": [
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "7": [
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "8": [
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "9": [
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "10": [
+    [
+      [
+        "exp_ports",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_ports",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_ports",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_ports",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_ports",
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_ports",
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "11": [
+    [
+      [
+        "exp_cluster"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_cluster"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_cluster"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_cluster"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_cluster"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_cluster",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "12": [
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin"
+      ],
+      "v"
+    ],
+    [
+      [
+        "exp_admin",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "13": [
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "14": [
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "15": [
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "16": [
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "17": [
+    [
+      [
+        "directory"
+      ],
+      "v"
+    ],
+    [
+      [
+        "directory"
+      ],
+      "v"
+    ],
+    [
+      [
+        "directory"
+      ],
+      "v"
+    ],
+    [
+      [
+        "directory"
+      ],
+      "v"
+    ],
+    [
+      [
+        "directory"
+      ],
+      "v"
+    ],
+    [
+      [
+        "directory",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "18": [
+    [
+      [
+        "calendar"
+      ],
+      "v"
+    ],
+    [
+      [
+        "calendar"
+      ],
+      "v"
+    ],
+    [
+      [
+        "calendar"
+      ],
+      "v"
+    ],
+    [
+      [
+        "calendar"
+      ],
+      "v"
+    ],
+    [
+      [
+        "calendar"
+      ],
+      "v"
+    ],
+    [
+      [
+        "calendar",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "19": [
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "20": [
+    [
+      [
+        "edge_devices",
+        "video_mesh"
+      ],
+      "v"
+    ],
+    [
+      [
+        "edge_devices",
+        "video_mesh"
+      ],
+      "v"
+    ],
+    [
+      [
+        "edge_devices",
+        "video_mesh"
+      ],
+      "v"
+    ],
+    [
+      [
+        "edge_devices",
+        "video_mesh"
+      ],
+      "v"
+    ],
+    [
+      [
+        "edge_devices",
+        "video_mesh"
+      ],
+      "v"
+    ],
+    [
+      [
+        "edge_devices",
+        "video_mesh",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "21": [
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra"
+      ],
+      "v"
+    ],
+    [
+      [
+        "mra",
+        "oreilly_toc"
+      ],
+      "c"
+    ]
+  ],
+  "22": [
+    [
+      [
+        "sso",
+        "directory",
+        "calendar",
+        "local_gateway",
+        "survivability",
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "sso",
+        "directory",
+        "calendar",
+        "local_gateway",
+        "survivability",
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "sso",
+        "directory",
+        "calendar",
+        "local_gateway",
+        "survivability",
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "sso",
+        "directory",
+        "calendar",
+        "local_gateway",
+        "survivability",
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "sso",
+        "directory",
+        "calendar",
+        "local_gateway",
+        "survivability",
+        "control_hub",
+        "clhct_outline"
+      ],
+      "c"
+    ]
+  ],
+  "23": [
+    [
+      [
+        "directory",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "directory",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "directory",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "directory",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "directory",
+        "clhct_outline"
+      ],
+      "c"
+    ]
+  ],
+  "24": [
+    [
+      [
+        "calling",
+        "translation",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "calling",
+        "translation",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "calling",
+        "translation",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "calling",
+        "translation",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "calling",
+        "translation",
+        "clhct_outline"
+      ],
+      "c"
+    ]
+  ],
+  "25": [
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "c"
+    ]
+  ],
+  "26": [
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "control_hub",
+        "clhct_outline"
+      ],
+      "c"
+    ]
+  ],
+  "27": [
+    [
+      [
+        "hybrid_security",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "hybrid_security",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "hybrid_security",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "hybrid_security",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "hybrid_security",
+        "clhct_outline"
+      ],
+      "c"
+    ]
+  ],
+  "28": [
+    [
+      [
+        "developer",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "developer",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "developer",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "developer",
+        "clhct_outline"
+      ],
+      "v"
+    ],
+    [
+      [
+        "developer",
+        "clhct_outline"
+      ],
+      "c"
+    ]
+  ]
+};
+const CHANGES = [
+  "Ch. 1: Current Smart Licensing replaces the option/release-key workflow described in the 2021 guide.",
+  "Ch. 16–21: Cloud and hybrid-service questions are version-labeled because connector architectures and service lifecycles have changed since publication.",
+  "Ch. 22–28: Added as a separate part and mapped to the seven official CLHCT v2.0 domains effective February 3, 2026."
+];
+
+const $=s=>document.querySelector(s);
+const LET=["A","B","C","D"];
+let current=[], submitted=false;
+
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+const total=BANK.reduce((s,c)=>s+c.qs.length,0);
+
+(function fill(){
+  const sel=$("#chap");
+  const all=document.createElement("option");all.value="all";all.textContent=`All chapters — full exam (${total} questions)`;sel.appendChild(all);
+  const mix=document.createElement("option");mix.value="mix50";mix.textContent="All chapters — random 50";sel.appendChild(mix);
+  let part=null,grp;
+  BANK.forEach(c=>{
+    if(c.part!==part){part=c.part;grp=document.createElement("optgroup");grp.label=part;sel.appendChild(grp);}
+    const o=document.createElement("option");o.value=c.n;o.textContent=`Ch. ${c.n}: ${c.title} (${c.qs.length})`;grp.appendChild(o);
+  });
+  try{const last=localStorage.getItem("clcei-ch");if(last)sel.value=last;}catch(e){}
+})();
+
+let multi=false;
+function build(){
+  const v=$("#chap").value;
+  try{localStorage.setItem("clcei-ch",v);}catch(e){}
+  const list=(v==="all"||v==="mix50")?BANK.map(c=>c.n):[+v];
+  run(list, v==="mix50" ? 50 : 0, null);
+}
+function buildFrom(chList){ run(chList, 0, "Weak-chapter drill: Ch. "+chList.join(", ")); }
+let drillLabel=null;
+function run(chList, sample, label){
+  drillLabel=label;
+  let qs=[];
+  BANK.forEach(c=>{ if(chList.includes(c.n)) c.qs.forEach((q,qi)=>qs.push({ch:c.n,chTitle:c.title,q,ver:(VER[c.n]||[])[qi]||[["toc"],"c"]})); });
+  multi=chList.length>1;
+  if(sample) qs=shuffle(qs).slice(0,sample);
+  else if($("#shuffle").checked || label) qs=shuffle(qs);
+  current=qs.map(item=>{
+    const [text,right,...rest]=item.q; const expl=rest.pop();
+    const opts=shuffle([{t:right,ok:true},...rest.map(t=>({t,ok:false}))]);
+    return {...item,text,opts,expl,correct:opts.findIndex(o=>o.ok)};
+  });
+  submitted=false;
+  $("#results").style.display="none";
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function render(){
+    const quiz=$("#quiz"); quiz.innerHTML="";
+  current.forEach((it,i)=>{
+    const d=document.createElement("div"); d.className="q"; d.id="q"+i;
+    d.innerHTML=`<div class="qhead"><div class="qnum">${i+1}.</div><div class="qtext">${it.text}${multi?`<div class="qtag">Chapter ${it.ch}: ${it.chTitle}</div>`:""}</div></div>
+      <div class="opts">${it.opts.map((o,k)=>`<label class="opt" data-k="${k}"><input type="radio" name="r${i}" value="${k}"><span class="L">${LET[k]}.</span><span>${o.t}</span></label>`).join("")}</div>
+      <div class="qfoot"><button class="toggle" data-i="${i}">Show answer</button><span class="verdict"></span></div>
+      <div class="answer"><b>Answer: ${LET[it.correct]}</b> — ${it.opts[it.correct].t}<br><span style="color:var(--muted)">${it.expl}</span>${srcLine(it.ver)}</div>`;
+    quiz.appendChild(d);
+  });
+  quiz.querySelectorAll(".toggle").forEach(b=>b.onclick=()=>toggle(+b.dataset.i));
+  quiz.addEventListener("change",updateMeta);
+  $("#actions").style.display=current.length?"flex":"none";
+  $("#submit").disabled=false;
+  updateMeta();
+}
+
+const TYPE={cisco:"Cisco docs",prep:"Exam-prep site",ref:"Reference"};
+function srcLine(ver){
+  const [ids,st]=ver;
+  const badge=st==="v"?`<span class="badge b-v">Verified</span>`:`<span class="badge b-c">Concept</span>`;
+  const links=ids.map(id=>{const s=SRC[id];return s?`<a href="${s[3]}" target="_blank" rel="noopener">${s[1]} — ${s[0]}</a> <span class="t-${s[2]}">(${TYPE[s[2]]})</span>`:""}).join(" · ");
+  return `<div class="src">${badge}${st==="v"?"Verified against: ":"Topic reference: "}${links}</div>`;
+}
+(function verifyPanel(){
+  let v=0,c=0;const used={};
+  BANK.forEach(ch=>ch.qs.forEach((q,i)=>{const e=(VER[ch.n]||[])[i]||[["toc"],"c"];e[1]==="v"?v++:c++;e[0].forEach(id=>used[id]=(used[id]||0)+1);}));
+  const byType={cisco:0,prep:0,ref:0};Object.keys(used).forEach(id=>{if(SRC[id])byType[SRC[id][2]]+=used[id];});
+  const sites={};Object.keys(used).forEach(id=>{const s=SRC[id];if(!s)return;(sites[s[1]]=sites[s[1]]||[]).push(id);});
+  const order=Object.keys(sites).sort((a,b)=>sites[b].reduce((t,i)=>t+used[i],0)-sites[a].reduce((t,i)=>t+used[i],0));
+  $("#vbody").innerHTML=`
+   <div class="vgrid">
+     <div class="kv"><span class="pct-ok">Verified</span><br><b>${v}</b> of ${v+c} (${Math.round(v/(v+c)*100)}%)</div>
+     <div class="kv"><span class="pct-mid">Concept</span><br><b>${c}</b></div>
+     <div class="kv"><span class="t-cisco">Cisco doc citations</span><br><b>${byType.cisco}</b></div>
+     <div class="kv"><span class="t-prep">Exam-prep site citations</span><br><b>${byType.prep}</b></div>
+     <div class="kv">Other references<br><b>${byType.ref}</b></div>
+   </div>
+   <div class="kv"><b style="font-size:14px">Verified</b> means a cited page directly states the correct answer. <b style="font-size:14px">Concept</b> means the answer matches the chapter topic and standard Cisco behavior, but no single checked page states it in those words. Each question's source appears when you show its answer.</div>
+   <h4>Corrections made during verification</h4><ul>${CHANGES.map(x=>`<li>${x}</li>`).join("")}</ul>
+   <h4>Exam-prep sites used</h4><ul><li><strong>Cisco Expressway documentation</strong> — current administration, clustering, port usage, and MRA guides.</li><li><strong>Webex Help Center</strong> — current Directory, Calendar, Calling, Video Mesh, identity, survivability, and security guidance.</li><li><strong>Webex for Developers</strong> — current API and programmability documentation.</li><li><strong>Official Cisco exam topics</strong> — CLHCT 300-820 v2.0 domain coverage.</li><li><strong>No braindump sites were used.</strong></li></ul>
+   <h4>All sources (${Object.keys(used).length})</h4>
+   <div class="srclist">${order.map(site=>sites[site].map(id=>`<div><a href="${SRC[id][3]}" target="_blank" rel="noopener">${SRC[id][0]}</a> <span class="t-${SRC[id][2]}">— ${site}</span></div>`).join("")).join("")}</div>`;
+})();
+
+function toggle(i,force){
+  const box=document.querySelector(`#q${i} .answer`), btn=document.querySelector(`#q${i} .toggle`);
+  const show=force!==undefined?force:!box.classList.contains("show");
+  box.classList.toggle("show",show); btn.textContent=show?"Hide answer":"Show answer";
+}
+function updateMeta(){
+  const answered=current.filter((_,i)=>document.querySelector(`input[name=r${i}]:checked`)).length;
+  $("#meta").innerHTML=current.length?`<span>${drillLabel?drillLabel+" · ":""}${current.length} questions</span><span>${answered} answered</span>`:"";
+}
+
+function submit(){
+  if(submitted) return;
+  const unanswered=current.filter((_,i)=>!document.querySelector(`input[name=r${i}]:checked`)).length;
+  if(unanswered && !$("#submit").dataset.confirm){
+    $("#submit").dataset.confirm="1"; $("#submit").textContent=`${unanswered} unanswered — submit anyway?`; return;
+  }
+  delete $("#submit").dataset.confirm; $("#submit").textContent="Submit test";
+  submitted=true;
+  let right=0,wrong=0,skip=0; const byCh={};
+  current.forEach((it,i)=>{
+    const q=$("#q"+i); q.classList.add("locked");
+    const sel=document.querySelector(`input[name=r${i}]:checked`);
+    q.querySelectorAll("input").forEach(x=>x.disabled=true);
+    const pick=sel?+sel.value:-1, ok=pick===it.correct;
+    const v=q.querySelector(".verdict");
+    q.querySelector(`.opt[data-k="${it.correct}"]`).classList.add("is-right");
+    if(pick>-1 && !ok) q.querySelector(`.opt[data-k="${pick}"]`).classList.add("is-wrong");
+    if(ok){right++;q.classList.add("correct");v.className="verdict ok";v.textContent="✓ Correct";}
+    else if(pick<0){skip++;q.classList.add("incorrect");v.className="verdict bad";v.textContent="✗ Not answered — correct answer is "+LET[it.correct];}
+    else {wrong++;q.classList.add("incorrect");v.className="verdict bad";v.textContent="✗ Incorrect — correct answer is "+LET[it.correct];}
+    const c=byCh[it.ch]||(byCh[it.ch]={t:it.chTitle,r:0,n:0}); c.n++; if(ok)c.r++;
+  });
+  showResults(right,wrong,skip,byCh);
+}
+
+function cls(p){return p>=80?"pct-ok":p>=60?"pct-mid":"pct-bad";}
+function showResults(r,w,s,byCh){
+  const n=r+w+s, pct=n?Math.round(r/n*1000)/10:0, pctW=n?Math.round(w/n*1000)/10:0, pctS=n?Math.round(s/n*1000)/10:0;
+  const mark=+$("#passMark").value, passed=pct>=mark;
+  const chs=Object.keys(byCh);
+  const pc=(c)=>Math.round(c.r/c.n*1000)/10;
+  const ccls=(p)=>p>=mark?"pct-ok":p>=mark-15?"pct-mid":"pct-bad";
+  let tbl="",study="";
+  if(chs.length>1){
+    tbl=`<table><thead><tr><th>Chapter</th><th style="text-align:right">Correct</th><th style="text-align:right">Score</th><th style="text-align:right">Status</th></tr></thead><tbody>`+
+      chs.sort((a,b)=>a-b).map(k=>{const c=byCh[k],p=pc(c);return `<tr><td>Ch. ${k}: ${c.t}</td><td class="num">${c.r}/${c.n}</td><td class="num ${ccls(p)}">${p}%</td><td class="num ${p>=mark?"pct-ok":"pct-bad"}">${p>=mark?"Pass":"Study"}</td></tr>`;}).join("")+`</tbody></table>`;
+    const weak=chs.filter(k=>pc(byCh[k])<mark).sort((a,b)=>pc(byCh[a])-pc(byCh[b]));
+    study=weak.length
+      ? `<div class="study"><h3 class="pct-bad">Chapters to study (${weak.length})</h3><ol>${weak.map(k=>`<li>Ch. ${k}: ${byCh[k].t} <span class="${ccls(pc(byCh[k]))}">— ${pc(byCh[k])}% (${byCh[k].r}/${byCh[k].n})</span></li>`).join("")}</ol><button id="drillWeak">Practice these chapters now</button></div>`
+      : `<div class="study ok"><h3 class="pct-ok">No weak chapters</h3><div class="kv">Every chapter in this test met your ${mark}% pass mark.</div></div>`;
+  } else if(chs.length===1 && !passed){
+    const k=chs[0];
+    study=`<div class="study"><h3 class="pct-bad">Chapter to study</h3><ol><li>Ch. ${k}: ${byCh[k].t} — review it, then click Retake.</li></ol></div>`;
+  }
+  const R=$("#results");
+  R.innerHTML=`<h2>Results</h2>
+    <div class="verdict-big ${passed?"v-pass":"v-fail"}">${passed?"PASS":"FAIL"}</div>
+    <div class="score"><div class="big ${passed?"pct-ok":"pct-bad"}">${pct}%</div>
+      <div class="kv">Final score<br><b>${r} / ${n}</b></div>
+      <div class="kv">Pass mark<br><b>${mark}%</b></div>
+      <div class="kv"><span class="pct-ok">Correct</span><br><b>${r}</b> <span>(${pct}%)</span></div>
+      <div class="kv"><span class="pct-bad">Incorrect</span><br><b>${w}</b> <span>(${pctW}%)</span></div>
+      <div class="kv">Unanswered<br><b>${s}</b> <span>(${pctS}%)</span></div></div>
+    <div class="bar"><div class="g" style="width:${pct}%"></div><div class="r" style="width:${pctW}%"></div><div class="u" style="width:${pctS}%"></div></div>
+    <div class="kv">${passed?`You scored ${pct}%, which is at or above your ${mark}% pass mark.`:`You scored ${pct}%, ${Math.round((mark-pct)*10)/10} points below your ${mark}% pass mark.`}</div>${study}${tbl}`;
+  R.style.display="block";
+  const dw=$("#drillWeak");
+  if(dw) dw.onclick=()=>{const weak=[...R.querySelectorAll(".study li")].map(li=>+li.textContent.match(/Ch\. (\d+)/)[1]);buildFrom(weak);};
+  $("#submit").disabled=true;
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+$("#start").onclick=build;
+$("#submit").onclick=submit;
+$("#reset").onclick=()=>{ if(drillLabel){ const l=[...new Set(current.map(c=>c.ch))]; buildFrom(l);} else build(); };
+$("#showAll").onclick=()=>{
+  const anyHidden=[...document.querySelectorAll(".answer")].some(a=>!a.classList.contains("show"));
+  current.forEach((_,i)=>toggle(i,anyHidden));
+  $("#showAll").textContent=anyHidden?"Hide all answers":"Show all answers";
+};
+
+/* ---- App shell: help, install, offline ---- */
+$("#helpBtn").onclick=()=>{const h=$("#help");h.open=!h.open;if(h.open)h.scrollIntoView({behavior:"smooth"});};
+let deferredPrompt=null;
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();deferredPrompt=e;$("#installBtn").style.display="inline-block";});
+$("#installBtn").onclick=async()=>{ if(!deferredPrompt){$("#help").open=true;$("#help").scrollIntoView({behavior:"smooth"});return;} deferredPrompt.prompt(); try{await deferredPrompt.userChoice;}catch(e){} deferredPrompt=null; $("#installBtn").style.display="none"; };
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent), standalone=window.matchMedia("(display-mode: standalone)").matches||navigator.standalone;
+if(isIOS && !standalone){ const b=$("#installBtn"); b.style.display="inline-block"; b.textContent="Install on iPhone"; }
+function net(){ const n=$("#netStatus"); if(location.protocol==="file:"){n.textContent="● offline copy";return;} n.textContent=navigator.onLine?(standalone?"● installed app":"● online"):"● offline (cached)"; }
+window.addEventListener("online",net);window.addEventListener("offline",net);net();
+if(location.protocol==="file:"){ $("#dlLink").style.display="none"; }
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){ navigator.serviceWorker.register("sw.js").catch(()=>{}); }
+</script>
+</body>
+</html>
